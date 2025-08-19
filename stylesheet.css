@@ -1,0 +1,71 @@
+html {
+    font-family: "Ubuntu Mono", monospace;
+    background-color: rgb(13, 14, 15);
+    margin: 10%;
+    margin-top: 1%;
+}
+body {
+    font-family: "Ubuntu Mono", monospace;
+    background-color: rgb(13, 14, 15);
+    color: orange;
+}
+div.content {
+    position:fixed;
+}
+marquee {
+    image-rendering: pixelated;
+    z-index: 100;
+}
+.pokemon {
+    height: auto;
+    width: auto;
+}
+h1 {
+    font-weight: bold;
+    margin-top: 10%;
+    font-size: 300%;
+}
+a {
+    color: rgb(150, 131, 168);
+    transition: 0.25s;
+    font-size: larger;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    text-decoration: none;
+}
+.link:hover {
+    background-color: rgb(150, 131, 168);
+    color: rgb(13, 14, 15); 
+}
+a.navbar-brand{
+    font-size:xx-large !important;
+    font-weight: bold;
+}
+nav{
+    padding-left: 4% !important;
+    background-color:  rgba(31, 36, 37, 0.215) !important;
+    margin: -12.5%;
+    margin-bottom: 0%;
+    padding-bottom: 0% !important;
+    margin-top: -1.5%;
+}
+img {
+    width: 80vh;
+    transition: 0.25s;
+}
+div{
+    font-weight: bold; 
+    font-size: larger;
+}
+div.downMore {
+    text-align: center;
+    font-size: medium;
+    position: sticky;
+    padding:1.5%;
+    bottom: 3vh;
+    left: 97vw;
+    width:fit-content;
+    margin: -2vh;
+    color: black;
+    border-radius: 1dvw;
+}

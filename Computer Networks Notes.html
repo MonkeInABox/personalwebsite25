@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CITS3002 Notes</title>
+    <meta name="description" content="Uni Notes" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheet.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="./index.html">MonkeInABox</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="./designs.html">./Train Maps</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./banddesigns.html">./Band Designs</a>
+      </li>
+      <li class="nav-item" style="background-color: rgb(13, 14, 15); border-radius: 8px 8px 0px 0px;">
+        <a class="nav-link" href="./notes.html">./Notes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./setlists.html">./Setlists</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://beepbeepbeepboom.nekoweb.org/">./Goblin's Den</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <div>
+        <h1 class="text-center">CITS3002 Notes</h1>
+        <br><br><br>
+        <div style="text-decoration: none;"><p><a class="link" href="./notes.html">cd -</a></p>
+<blockquote>
+<p>Written by Jeremy Butson 2024 based on UWA CITS3002 Lecture Notes</p>
+</blockquote>
+<h1 id="introduction">Introduction</h1>
+<h2 id="definitions">Definitions:</h2>
+<ul>
+<li>Computer Network: an interconnected collection of autonomous computers<ul>
+<li>interconnected if they are capable of exchanging information</li>
+</ul>
+</li>
+<li>Computers are autonomous if there is not a permanent master/slave relationship between them.</li>
+</ul>
+<h2 id="internet-protocols">Internet Protocols:</h2>
+<ul>
+<li>Consists of an agreed format for messages, expressed by a packet header, an optional message component, and a set of rules for the exchange of messages between computers.</li>
+<li>Must - <ul>
+<li>happen in an agreed order</li>
+<li>travel from the sender to the correct receiver(s)</li>
+<li>contain the correct unambiguous data</li>
+</ul>
+</li>
+</ul>
+<h2 id="isoosi-reference-model">ISO/OSI Reference Model:</h2>
+<ul>
+<li>We require protocols to &quot;meet&quot; new computers, ask for information, agree to share data, etc.</li>
+<li>Open Systems Interconnection/International Standards Organization</li>
+<li>The 7 layer model:</li>
+</ul>
+<ol>
+<li><strong>THE PHYSICAL LAYER</strong>: is responsible for transmitting a (raw) bit stream over the physical communication medium. </li>
+<li><strong>THE DATA-LINK LAYER</strong>: takes the bit stream from the physical layer and constructs logical chunks of data termed <em>frames</em>.</li>
+<li><strong>THE NETWORK LAYER</strong>: is responsible for providing the connection between &quot;end systems&quot; across a network. Network layer functions include:<ol>
+<li>Routing: deciding how to transmit frames between source and destination using addresses</li>
+<li>Relaying: enables data transfer across intermediate networks</li>
+<li>Flow control: matches traffic flow with physical capacity of a transmission path</li>
+<li>Sequencing: control ordering of frames across a network</li>
+</ol>
+</li>
+<li><strong>THE TRANSPORT LAYER</strong>: provides a reliable end-to-end service independent of the network topology. This is achieved by splitting messages into network sized packets and joining them back together again at the other end.</li>
+<li><strong>THE SESSION LAYER</strong>: is the upper layer crucial to internetworking and manages the dialogue between end systems. Typically provides:<ol>
+<li>establishment and closing of connections</li>
+<li>synchronization to allow checking and recovery of data</li>
+<li>negotiation of full and half duplex communication</li>
+</ol>
+</li>
+<li><strong>THE PRESENTATION LAYER</strong>: provides a standard format for transferred information by overcoming compatibility problems between systems using dissimilar data encoding rules and possibly different display technologies. </li>
+<li><strong>THE APPLICATION LAYER</strong>: provides the interface between the application processes. In particular, functions such as file transfer, remote job execution and application dependent virtual terminal support are provided.</li>
+</ol>
+<h1 id="the-physical-layer">The Physical Layer</h1>
+<h2 id="physical-layer-responsibilities">Physical Layer Responsibilities:</h2>
+<ul>
+<li>Provides topology of network</li>
+<li>Provides transfer medium</li>
+<li>[TX] Encodes data into a transmission signal supported by medium</li>
+<li>[RX] Decodes data into a transmission signal supported by medium</li>
+<li>[TX+RX] Generates or amplifies re-transmitted signals along the medium</li>
+<li>[RX] Monitors transmission errors</li>
+<li>[RX] Detects arriving signal levels to synchronize speed and timing</li>
+</ul>
+<h2 id="data-link-layer-responsibilities">Data Link Layer Responsibilities:</h2>
+<ul>
+<li>[TX] Constructs data frames using the format of the physical layer</li>
+<li>[TX] Calculates Cyclic Redundancy Codes (CRC) information</li>
+<li>[RX] Checks arriving error using CRC information </li>
+<li>[RX] Initiates and arbitrates the link to reduce interruption and contention</li>
+<li>[RX] Examines arriving and passing device addresses in data</li>
+<li>[RX+TX] Acknowledges receipt of a frame</li>
+<li>[RX+TX] Retransmits data if there is an error</li>
+</ul>
+<h2 id="metrics-of-network-measurement">Metrics of Network Measurement:</h2>
+<ul>
+<li>We want high bandwidth and low latency</li>
+<li><strong>Latency/Propagation Delay</strong>: amount of time it takes for the first bit to reach its destination. Round-trip time (RTT) is twice the latency. </li>
+<li><strong>Bandwidth</strong>: the number of bits that can be fit through a network connection, per unit time.</li>
+<li><strong>Throughput</strong>: usually the measured number of bits per second, while bandwidth is the nominal bits per second possible. 
+$$
+T_{latency} = T_{propagation} + T_{transmit} + T_{queue}
+$$
+$$
+T_{propagation} = distance/speedOfPropInMedium
+$$
+$$
+T_{transmit} = messageSize/bandwidth
+$$
+$$
+T_{queue} = timeSpentInLocalAndRemoteOSAndSwitchQueues
+$$</li>
+</ul>
+<h2 id="transmission-errors">Transmission Errors:</h2>
+<ul>
+<li>Usually occur in bursts and are caused by:<ul>
+<li>thermal background noise</li>
+<li>impulse noise, electrical arcing</li>
+<li>distorted frequency</li>
+<li>crosstalk between adjacent wires</li>
+</ul>
+</li>
+</ul>
+<h2 id="how-data-is-placed-in-frames">How Data Is Placed In Frames:</h2>
+<ul>
+<li>Simple timing gaps between frames cannot be used as all hardware devices run at slightly different speeds; resulting in skewing if time is relied upon</li>
+<li>To overcome synchronization problems, special byte sequences are often used to prefix and suffix the data, so byte stuffing using DLE, STX and ETX</li>
+</ul>
+<h2 id="phase-encoding-of-signals">Phase Encoding Of Signals:</h2>
+<ul>
+<li>A digital signal is a sequence of discrete, discontinuous pulses or signal elements</li>
+<li>If all signal elements have the same sign, they are unipolar</li>
+<li>The modulation rate of a LAN is the number of signal elements a second (baud rate)</li>
+<li>Data may be modified so that errors can either be:<ul>
+<li>detected</li>
+<li>corrected</li>
+</ul>
+</li>
+<li>Correction is required where communication must be simplex (only possible in one direction), but it is expensive. A good example of its need is between Earth and inter-planetary spacecraft. </li>
+<li>Error correction by receiver is <em>forward error correction</em>, re-transmission schemes are referred to as <em>reverse error correction</em>.</li>
+<li>The <strong>HAMMING DISTANCE</strong> between two codewords consists of the number of bit positions in which they differ. The difference is performed via XOR.<ul>
+<li>The Hamming distance of a code is the minimum Hamming distance between any two words in that code.</li>
+</ul>
+</li>
+<li>To detect δ errors, a distance of δ + 1 is required</li>
+<li>To correct δ errors a distance of 2δ + 1 is required so that even with δ errors, the damaged codeword is the closest to one valid codeword</li>
+</ul>
+<h2 id="hammings-correction-of-single-bit-errors">Hamming&#39;s Correction of Single-Bit Errors:</h2>
+<ul>
+<li>m bits for the message, and r bits of seemingly redundant information, therefore we transmit $$ n=m+r $$ when transmitting a message.</li>
+<li>Each of the 2$^m$ possible message words has n illegal code words which are a distance 1 from it. Therefore, each message word requires n+1 distinct bit patterns.</li>
+</ul>
+<h2 id="how-does-checksum-error-detection-work">How Does Checksum Error Detection Work?</h2>
+<ol>
+<li>Break original message into k blocks of n bits</li>
+<li>Sum all k blocks</li>
+<li>Add the carry to the sum and take the 1&#39;s complement</li>
+<li>If when the receiver sums the k blocks and the check sum block and it adds to all 1s, then it accepts the data, otherwise it is wrong</li>
+</ol>
+<h2 id="how-does-crc-cyclic-redundancy-check-work">How Does CRC (Cyclic Redundancy Check) Work?</h2>
+<ol>
+<li>Find the length of divisor (&#39;L&#39; in this example)</li>
+<li>Append L-1 bits to the original message</li>
+<li>Perform binary division operation</li>
+<li>Remainder is the CRC<ol>
+<li>The CRC hence is L-1 bits</li>
+</ol>
+</li>
+</ol>
+<h1 id="data-link-layer">Data Link Layer</h1>
+<h3 id="what-is-the-data-link-layer">What is the Data Link Layer?</h3>
+<ul>
+<li>The Data Link Layer provides the following services between the physical and network layers:<ul>
+<li>bundling and unbundling groups of bits into <em>frames</em> for the physical layer</li>
+<li><em>throttling</em> the flow of frames between sender and receiver</li>
+<li>detecting and correcting &quot;higher-level&quot; transmission errors, such as the sequencing of packets from the network layer</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-levels-of-data-link-layer-complexity">3 Levels of Data Link Layer Complexity:</h3>
+<ul>
+<li><strong>Simplex connectionless</strong> - the sender simply sends its frames without waiting for the receiver to acknowledge them. No attempt is made to detect or re-transmit lost frames. Most modern LAN technologies (such as ethernet) use this method and leave error resolution to higher layers. A.K.A. unacknowledged connectionless service.</li>
+<li><strong>Half-duplex connectionless</strong> - each frame sent is individually acknowledged. Frames which are lost or garbled are retransmitted if the receiver requests them (again) or after a suitable timeout. A.K.A. acknowledged connectionless service.</li>
+<li><strong>Full-duplex connection-oriented</strong> - each frame is individually numbered and is guaranteed by the data link layer to be received once and only once and in the right order. The result is that the data link layer presents a reliable frame <em>stream</em> to the network layer. A.K.A. acknowledged connected service.</li>
+</ul>
+<h3 id="some-declarations-for-introductory-protocols">Some Declarations for Introductory Protocols:</h3>
+<ul>
+<li>As our protocols &quot;evolve&quot; we&#39;ll need to distinguish different types of data link frames from each other</li>
+</ul>
+<pre><code>#define MAX_DATA_SIZE 1000
+
+typedef struct {
+    int len; //length of the payload
+    char data[MAX_DATA_SIZE];
+} FRAME;
+
+#define FRAME_HEADER_SIZE (sizeof(FRAME) - sizeof(FRAME.data))
+#define FRAME_SIZE(f) (FRAME_HEADER_SIZE + f.len)
+</code></pre>
+<h3 id="the-unrestricted-simplex-protocol">The Unrestricted Simplex Protocol:</h3>
+<ul>
+<li>Assuming:<ul>
+<li>a (unidirectional) error free channel</li>
+<li>that the sender&#39;s network layer has unlimited data to send (being &quot;pushed down&quot; from above)</li>
+<li>that the receiver&#39;s network layer has an infinite buffer to receive the data (being &quot;pushed up&quot; from below)</li>
+<li>that the functions READ_xxx_LAYER() and WRITE_xxx_LAYER() block until their actions are complete - they execute synchronously</li>
+</ul>
+</li>
+<li><strong>In the Sender:</strong></li>
+</ul>
+<pre><code class="language-c">FRAME frame;
+int   len, link = 1;
+
+while( true ) {
+    READ_NETWORK_LAYER(frame.data, &amp;len);
+    frame.len = len;
+    WRITE_PHYSICAL_LAYER(link, &amp;frame, FRAME_SIZE(frame));
+}
+</code></pre>
+<ul>
+<li><strong>In the Receiver:</strong></li>
+</ul>
+<pre><code class="language-c">FRAME frame;
+int   len, link;
+
+while( true ) {
+    READ_PHYSICAL_LAYER(&amp;link, &amp;frame, &amp;len);
+    WRITE_NETWORK_LAYER(frame.data, frame.len);           
+}
+</code></pre>
+<h3 id="software-simulations">Software Simulations:</h3>
+<ul>
+<li><strong>Benefits</strong>:<ul>
+<li>Many different aspects can be controlled and examined on very dynamic &quot;networks&quot;:<ul>
+<li>network topology</li>
+<li>message arrival rate</li>
+<li>message size and destination</li>
+<li>transmission speeds and delays</li>
+<li>frame corruption and loss</li>
+<li>extent of node and link failures</li>
+<li>signal strength and propagation models</li>
+<li>node mobility</li>
+</ul>
+</li>
+<li>Real network infrastructure is <em>static and too reliable</em> - error rates on local area networks are too infrequent</li>
+<li>Centralized control of a network permits the accurate management and collection of statistics and their analysis</li>
+</ul>
+</li>
+<li><strong>Pitfalls:</strong><ul>
+<li>The choice of a simulation environment can constrain the types of practical exercises and discourage creativity </li>
+<li>The <em>wrong</em> choice of network simulator can seriously impede a student&#39;s learning and dissuade experimentation</li>
+<li>Purpose written simulators have constrained domains - transport-layer protocol testbeds do not actually &quot;transmit&quot; the data frames</li>
+<li>Very few students are enthused by simulations whose role is to verify or develop statistical models</li>
+<li>Students can perceive a simulation as something that will never happen</li>
+<li>Too much control/variation can overwhelm</li>
+</ul>
+</li>
+</ul>
+<h3 id="frame-pipelining">Frame Pipelining:</h3>
+<ul>
+<li>If the distance (in time) between sender and receiver is long or expensive, bandwidth should be maximised</li>
+<li>The solution is to permit <em>multiple</em> outstanding frames</li>
+<li>This happens by the sender transmitting <em>many</em> frames until the medium is &#39;full&#39;, and then wait for acknowledgements indicating that frames have been received correctly before proceeding</li>
+<li>When frames or acknowledgements are lost:<ul>
+<li>the go-back-to-N protocol</li>
+<li>the selective repeat protocol</li>
+</ul>
+</li>
+</ul>
+<h1 id="lans--wlans">LANs &amp; WLANs</h1>
+<h2 id="simplified-satellite-broadcasting">Simplified Satellite Broadcasting</h2>
+<ul>
+<li>Many users share a <em>single</em> channel</li>
+<li>Propagation at the speed of light, 300,000km/sec</li>
+<li>However, the <em>distance</em> travelled is large, resulting in round trip times of ~270-700msec</li>
+<li>Bandwidth, typically 500Mbps, is currently about 5x higher than typical LAN-based networks as it less limited by speed of local infrastructure</li>
+<li>Cost is the same whatever the distance between sender and receiver</li>
+<li>Satellite acts as a repeater of incoming signals, amplifying and re-broadcasting these signals</li>
+<li>If 2 stations broadcast simultaneously, the satellite will receive and re-broadcast the <em>sum</em> of these 2 signals, resulting in garbage. This is a <strong>collision</strong></li>
+<li>A sender can listen to a re-broadcast of their own packets and determine whether a collision has occurred, however there are <strong>no acknowledgements</strong></li>
+<li>Users are uncoordinated and can only communicate via the channel<ul>
+<li>Therefore, the satellite must control its own allocation</li>
+</ul>
+</li>
+<li>Advantages of this approach (shared medium):<ul>
+<li>No data link layer acknowledgements needed, as users can verify themselves</li>
+<li>No routing problems in the Network Layer (no subnet!!)</li>
+<li>No congestion problems or topology optimization</li>
+<li>Mobile users may be supported</li>
+</ul>
+</li>
+<li>Disadvantages:<ul>
+<li>Long propagation delay of at least 270ms</li>
+<li>All users receive all messages</li>
+</ul>
+</li>
+</ul>
+<h2 id="channel-allocation">Channel Allocation</h2>
+<ul>
+<li>2 common schemes:<ul>
+<li><h3 id="polling"><strong>Polling</strong></h3>
+<ul>
+<li>satellite or ground offers the channel to an individual user for a specified amount of time</li>
+<li>Delays, making this impractical</li>
+</ul>
+</li>
+<li><h3 id="frequency-and-time-division-multiplexing"><strong>Frequency and Time Division Multiplexing</strong></h3>
+<ul>
+<li>2 Forms:<ul>
+<li>FDMA (frequency division multiplexing), channel is divided into N frequency bands for a maximum of N users, guard bands are placed between these limits</li>
+<li>TDMA (time division multiplexing), channel is divided into slots based on time intervals, each user using a channel for that certain amount of time</li>
+</ul>
+</li>
+<li>Both are inefficient as the number of users is in &quot;bursts&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="local-area-networks">Local Area Networks</h2>
+<blockquote>
+<p>&quot;A LAN is a routerless network, using the same protocol stack for each device, and using only uniform, local, networking media.&quot;</p>
+</blockquote>
+<ul>
+<li>LANs are between about 10 - 0.1km in separation with a bit rate of 100 - 10,000Mbps</li>
+<li>Machines connect to a single cable within a 1km radius (often same building or campus)</li>
+<li>Total data rate &gt;10Mbps (due to short round trip time and simple data bit layer)</li>
+<li>Single organization ownership</li>
+<li>Usually use broadcasting (no routing problems, but everyone sees all frames)</li>
+</ul>
+<h2 id="carrier-sense-networks">Carrier Sense Networks</h2>
+<ul>
+<li>All stations can <em>sense</em> the electrical carrier before sending<ul>
+<li>This is possible because of the use of high speed cables over short distances</li>
+</ul>
+</li>
+<li>Factors affecting CSMA (carrier-sense multiple access) LANs:<ol>
+<li>All frames are of constant length</li>
+<li>There are no transmission errors</li>
+<li>No capture effect</li>
+<li>Random delay after collision is uniformly distributed and large compared to the frame&#39;s transmission time</li>
+<li>Frame generation attempts form a Poisson process with mean G frames per time</li>
+<li>A station may <strong>not</strong> transmit and receive simultaneously</li>
+<li>Each station can sense the transmission of other stations</li>
+<li>Sensing of the channel state can be performed at the same time as transmitting</li>
+<li>The propagation delay is small compared to the frames&#39; transmission time, and identical for all stations</li>
+</ol>
+</li>
+<li><em><strong>Persistent CSMA Protocols:</strong></em><ul>
+<li>Each station first senses activity on the channel</li>
+<li>If stations A and B are waiting for C to finish, they pause until they sense it is free, transmit with a probability of 1</li>
+<li>The longer the propagation delay = the more collisions, worse performance</li>
+</ul>
+</li>
+</ul>
+<h2 id="ieee-802x-lan-standards---the-ethernet-system">IEEE-802.x LAN Standards - The Ethernet System</h2>
+<ul>
+<li>Uses a 1-persistent CSMA with collision detection (CD) method</li>
+<li>Each packet must be at least 64bytes to provide reasonable chance to have collisions be detected over long propagation times</li>
+<li>Due to power losses in Ethernet cables, each segment cannot exceed 500m, so repeaters used to connect up to 5 into a single LAN, this and other physical properties of ethernet are specified in IEEE-802.3</li>
+</ul>
+<h3 id="ethernet-contention-algorithm">Ethernet Contention Algorithm</h3>
+<ul>
+<li>Each station wanting to transmit, listens to the ether and on finding it silent, begins transmission</li>
+<li>On detecting a collision: (called <em>binary exponential back off</em>)<ul>
+<li>Backs off for random period</li>
+<li>After first collision backs off for 0 or 1 times slots before trying again, second, 0, 1, 2, or 3 times</li>
+<li>In general a station will back off from 0 to 2<sup>i-1</sup> times after the i<sup>th</sup> collision</li>
+<li>After 16, it considers it &quot;severed&quot;</li>
+</ul>
+</li>
+</ul>
+<h2 id="packet-transport-mechanisms">Packet Transport Mechanisms</h2>
+<ul>
+<li>Each station connects to the ether with a transceiver, failures of this transceiver must not pollute the ether, power failure must not cloud it, and disconnection must not be noticed by the other stations</li>
+<li><h3 id="5-significant-mechanisms-to-reduce-probability-and-cost-of-losing-a-packet">5 Significant Mechanisms to Reduce Probability and Cost of Losing a Packet</h3>
+<ol>
+<li>Carrier detection (phase encoding which guarantees at least one phase transition)</li>
+<li>Packet error detection</li>
+<li>Interference detection (each transceiver has an interference detector)</li>
+<li>Truncated packet filtering (hardware is able to filter them out)</li>
+<li>Collision consensus enforcement (deliberately jamming the ether to ensure the other colliding stations hear the collision as quickly as possible)</li>
+</ol>
+</li>
+</ul>
+<h2 id="hubs-switches-and-collision-domains">Hubs, Switches and Collision Domains</h2>
+<ul>
+<li>A collision now occurs when a device or LAN-segment receives two or more signals simultaneously.</li>
+<li>A hub will retransmit the frame to <em>ALL</em> of its outgoing ports, whereas a switch will more &#39;intelligently&#39; retransmit the signal to the ports known to be wanting the frame. </li>
+<li>A collision domain is the set of devices (potentially) receiving a frame collision.</li>
+</ul>
+<h2 id="ieee-80211-wireless-lan-protocol">IEEE-802.11 Wireless LAN Protocol</h2>
+<ul>
+<li>Of interest is not just the maximum possible transmission rate, but the distance over which WiFi may operate</li>
+<li>The unit <strong>dBm</strong> is defined as the power ratio in decibel referenced to one milliwatt. It represents absolute power, a WiFi access point (AP) will typically transmit up to 100mW, and a receiving device will typically be able to discern signal from noise until -90dBm</li>
+</ul>
+<h2 id="hidden-node">Hidden Node</h2>
+<ul>
+<li>The method of simply waiting until the airways are clear, such as wired, in wireless networks does not work, because not all nodes are within range of each other</li>
+</ul>
+<h2 id="collision-avoidance-80211">Collision Avoidance (802.11)</h2>
+<ul>
+<li>Most wireless cards are unable to both transmit and receive at the same time on the same frequency - they employ <em>half-duplex</em> transmissions</li>
+<li>This means collisions cannot be detected while transmitting</li>
+<li>It employs collision <em>avoidance</em> to reduce the likelihood of collisions occurring. The algorithm is termed Multiple Access with Collision Avoidance (MACA), where both <em>physical channel</em> sensing and <em>virtual channel</em> sensing are employed<ul>
+<li>Basically; before transmitting data frames, the sender and receiver must first exchange additional control frames before the &#39;true&#39; data frames. The success or failure of this initial exchange either reserves the medium for communication or directs how the sender, receiver and all other nodes should act</li>
+</ul>
+</li>
+</ul>
+<h1 id="network-layer">Network Layer</h1>
+<ul>
+<li>The data link layer had the responsibility of reliably transmitting frames across along a single wire (or wireless) link</li>
+<li>Network layer&#39;s responsibility is to get packets from an actual source machine to a destination machine</li>
+<li>The lowest OSI layer that has to deal with end-to-end transmission</li>
+<li>It must be aware of the immediate topology of its subnet to make routing choices</li>
+</ul>
+<h2 id="network-layer-design-objectives">Network Layer Design Objectives</h2>
+<ul>
+<li>The design objectives of an effective Network Layer are:<ul>
+<li>to be independent of processor and communication technology</li>
+<li>to be independent of the number, type and topology of the subnets</li>
+<li>to provide a uniform addressing scheme for all hosts in the network</li>
+</ul>
+</li>
+</ul>
+<h2 id="responsibilities-of-the-network-layer">Responsibilities of the Network Layer</h2>
+<ul>
+<li>The network layer includes nearly all of the functions we consider important in multi-node networks</li>
+<li>Each node can be responsible for everything from handling its own links to managing the network topology</li>
+<li>Three types of requirements:<ul>
+<li><strong>Source and destination functions:</strong> end-to-end protocols, network layer software interface, fragmentation and reassembly of messages, management of network layer sequence numbers, and creation, manipulation and deletion of headers.</li>
+<li><strong>Store and forward functions:</strong> choice of the best route for packets, local flow control and local error control</li>
+<li><strong>Network-wide management functions:</strong> network flow control, topological awareness and modification, and network performance measurement and monitoring.</li>
+</ul>
+</li>
+<li><em>Further explanation of packet fragmentation and reassembly</em>:<ul>
+<li>Messages divided into smaller data units (packets) before transmission, they travers the network independently and then the destination stitches them back together, using each packet&#39;s header to see where they go</li>
+<li>This has benefits of a fixed buffer size, prevents congestion at destination and they require simpler memory allocation schemes</li>
+</ul>
+</li>
+</ul>
+<h2 id="network-layer-header-management">Network Layer Header Management</h2>
+<ul>
+<li>The NL header is created in the source node, examined in intermediate nodes and removed at the destination node</li>
+</ul>
+<h2 id="path-of-frames-and-packets">Path of Frames and Packets</h2>
+<ul>
+<li>Whereas the data link layer must acknowledge each frame once it successfully transverses a link, the NL acknowledges each packet as it arrives at its destination</li>
+</ul>
+<h2 id="network-layer-routing-algorithms">Network Layer Routing Algorithms</h2>
+<ul>
+<li>The routing algorithms are the part of the Network Layer software that decides on which outgoing line an incoming packet should go<ul>
+<li>for virtual circuits: route is chosen each session</li>
+<li>for datagrams: route is chosen for each packet</li>
+</ul>
+</li>
+<li>Desirable properties for the routing systems are similar to those for the whole network layer:<ul>
+<li>correctness, simplicity, robustness, stability, fairness and optimality</li>
+</ul>
+</li>
+<li>Robustness is significant for 2 reasons:<ul>
+<li>Once a large network is off and running it is difficult to change the routing algorithm software</li>
+<li>Network topologies often change - hosts, IMPs and lines frequently fail</li>
+</ul>
+</li>
+<li>The better a routing algorithm can cope with changes in topology, the more it is</li>
+</ul>
+<h2 id="two-classes-of-routing-algorithm">Two Classes of Routing Algorithm</h2>
+<ul>
+<li>Non-adaptive<ul>
+<li>the choice of routes between two hosts are computed in advance and loaded into each host in the whole network</li>
+<li>often called static routing</li>
+<li>Example: Flooding, where initially every incoming packet is retransmitted on every link, which gives it the shortest package delay and is robust to machine failures. However, it <em>does</em> flood the network. Some possible improvements include not retransmitting it on the link they came from, acknowledgements are sent through <em>only</em> this link</li>
+</ul>
+</li>
+<li>Adaptive<ul>
+<li>attempts to adjust their route choices based on their current knowledge of the network topology</li>
+<li>Three types:<ul>
+<li>global use information periodically collected from whole network</li>
+<li>local algorithms use only the information that each router knows about itself</li>
+<li>combined use both</li>
+</ul>
+</li>
+<li>often called dynamic routing</li>
+<li>Example: Distance Vector Routing, where it maintains a table in each router of the best known distance to each destination and the preferred link to that destination. However, if the reliability is uncertain, we may encounter the count-to-infinity problem, where if a router goes down, that distance/time is infinite. If router A crashes, B may want to send via C, then C does the same to B and so on to infinity.</li>
+</ul>
+</li>
+</ul>
+<h2 id="congestion-and-flow-control-in-the-network-layer">Congestion and Flow-Control in the Network Layer</h2>
+<ul>
+<li>If too many packets are dumped into some part of the subnet, network performance will decrease sharply<ul>
+<li>This can increase the frequency of timeouts and re-transmissions</li>
+</ul>
+</li>
+<li><strong>Congestion Control</strong> is concerned with ensuring that the subnet can carry the offered traffic - a global issue concerning all hosts and routers working together</li>
+<li><strong>Flow Control</strong> is concerned with end-to-end control<ul>
+<li>Sender requests the allocation of buffer space and time in the intermediate nodes and the receiver</li>
+</ul>
+</li>
+<li>Both of these work together to reduce the offered traffic entering the network when the load is already high, detected through:<ul>
+<li>percentage of packets discarded for lack of buffer space</li>
+<li>average router queue lengths</li>
+<li>number of packets timing out</li>
+<li>average packet delay</li>
+</ul>
+</li>
+<li><strong>Open Loop Control</strong> attempts to prevent congestion in the first place. Pre-allocating buffer space for each virtual circuit</li>
+<li><strong>Closed Loop Control</strong> maintains a feedback loop of 3 stages:<ul>
+<li>monitoring of local subnet to detect where congestion occurs</li>
+<li>passing information to where corrective action may be taken</li>
+<li>adjustment of local operation to correct problem</li>
+</ul>
+</li>
+</ul>
+<h2 id="load-shedding">Load Shedding</h2>
+<ul>
+<li>If not all demand can be met, some section is deliberately disadvantaged</li>
+<li>The Network Layer now introduces an <strong>UNRELIABLE SERVICE!</strong></li>
+<li>Constraints:<ul>
+<li>Must balance reasonable delay and user freedom</li>
+<li>Maintain fair access to all users</li>
+<li>Respect rights of priority users</li>
+</ul>
+</li>
+</ul>
+<h1 id="tcpip-protocols">TCP/IP Protocols</h1>
+<h4 id="tcpip-protocol-layers--common-protocols">TCP/IP Protocol Layers &amp; Common Protocols</h4>
+<ul>
+<li>Application | Telnet, FTP, SMTP, DNS, RIP, SNMP</li>
+<li>Transport | TCP, UDP</li>
+<li>Internet/Network | ARP, IP, IGMP, ICMP</li>
+<li>Link (can also be referred to as the data link and physical layers) | Ethernet, ATM</li>
+</ul>
+<h4 id="requirements-of-internetworking">Requirements of Internetworking</h4>
+<ul>
+<li>Networks come in different topologies and speeds, so no single network configuration suits everyone</li>
+<li>Internetworking draws the multitudes of networking technologies into a common framework, combining networks into internets</li>
+<li>In general, an internetwork must: <ul>
+<li>Provide a link between networks</li>
+<li>Provide routing and delivery of data</li>
+<li>Provide an accounting service, keeping track of the status of networks and gateways</li>
+<li>Accommodate the differences between sub-networks</li>
+</ul>
+</li>
+</ul>
+<h4 id="initial-internet-concepts">Initial Internet Concepts</h4>
+<p><strong>Ground Rules</strong>:</p>
+<ul>
+<li>Each distinct networks would have to stand on its own</li>
+<li>Communications would be on a best effort basis (if a packet doesn&#39;t make it to a final destination, it would shortly be retransmitted)</li>
+<li>Black boxes would be used to connect the networks, later called gateways, that hold no information from packets passing through</li>
+<li>No global control at the operations level
+<strong>Key Issues</strong>:</li>
+<li>Algorithms to prevent lost packets from permanently disabling communications</li>
+<li>Providing for host to host pipelining</li>
+<li>Gateway functions to allow it to forward packets appropriately</li>
+<li>Need for end-end checksums, reassembly of packets and detection of duplicates</li>
+<li>Need for global addressing</li>
+<li>Test for host-to-host flow control</li>
+<li>Interfacing with various OSs
+<strong>Emergent Basic Approaches</strong>:</li>
+<li>Communications consist of a very long streams of bytes (octets)</li>
+<li>Flow control done by sliding windows and acknowledgements</li>
+<li>32 bit IP address used (8 bits signified network, 24 bits designated the host)</li>
+</ul>
+<h4 id="address-resolution-protocol-arp">Address Resolution Protocol (ARP)</h4>
+<ul>
+<li>Low level protocol that hides the underlying physical addressing, permitting one or more internet addresses to be assigned to each machine</li>
+<li>Its design permits it to indicate how big its own fields will be</li>
+</ul>
+<h4 id="configuration-of-network-devices">Configuration of Network Devices</h4>
+<ul>
+<li>To configure its own network connection, a client host requires:<ul>
+<li>One unique IP address for each network interface</li>
+<li>The client&#39;s hostname</li>
+<li>Address of default router</li>
+<li>Each interface&#39;s subnet mask (determines how many bits of the IP address provide the network and host ids)</li>
+<li>IP address of an initial DNS (domain name server)</li>
+<li>The time, or at least the time zone</li>
+</ul>
+</li>
+</ul>
+<h4 id="problems-with-static-configuration">Problems with Static Configuration</h4>
+<ul>
+<li>Sys admins may have to oversee hundreds of machines on a network</li>
+<li>Single network domain may service many more computers than it has registered IP addresses</li>
+<li>Mobile computers may wish to frequently connect to different networks</li>
+<li>Some previously trusted computers may become untrusted</li>
+</ul>
+<h4 id="bootstrap-protocol-bootp">Bootstrap Protocol (BOOTP)</h4>
+<ul>
+<li>UDP/IP based protocol that allows a booting host to configure itself dynamically</li>
+<li>A server&#39;s BOOTP response includes several configuration items and fits in a single (Ethernet) packet</li>
+<li>Immediately boot up and asks through their MAC address what they should be (addresses, IPs, etc.)</li>
+</ul>
+<h4 id="dynamic-host-configuration-protocol-dhcp">Dynamic Host Configuration Protocol (DHCP)</h4>
+<ul>
+<li>Enables individual computers on an IP network to extract their configurations from a server</li>
+<li>Responses to each client will be generated dynamically</li>
+<li>Overall purpose being to reduce the work necessary to administer a large IP-based network</li>
+<li>Based on BOOTP, however DHCP allows for dynamic allocation of network addresses and configurations to newly attached hosts</li>
+</ul>
+<h4 id="internet-protocol-ip-datagrams">Internet Protocol (IP) Datagrams</h4>
+<ul>
+<li>Provides an unreliable, best-effort, connectionless, packet delivery system</li>
+<li>We will primarily use IP v4</li>
+<li>Internet datagrams resemble standard physical layer frames, but are designed to be encapsulated within the normal network framing schema</li>
+</ul>
+<h4 id="internet-control-message-protocol-icmp">Internet Control Message Protocol (ICMP)</h4>
+<ul>
+<li>Allows gateways and hosts to exchange bootstrap and error information</li>
+<li>Gateways send ICMP datagrams when they cannot deliver a datagram, or to direct hosts to use another gateway</li>
+</ul>
+<h1 id="transport-layer">Transport Layer</h1>
+<h4 id="port-numbers">Port Numbers</h4>
+<ul>
+<li>IP addresses only address hosts and not individual OS processes on those hosts</li>
+<li>From the perspective of any transport protocol, such as TCP, each frame is identified by a 16bit positive port number that identifies the software end point</li>
+<li>TCP demultiplexes each arriving segment to its corresponding end point, using a port as an index</li>
+<li>Port numbers under 1024 are <em>reserved ports</em>, can be shown on Linux by <code>/etc/services</code></li>
+</ul>
+<h4 id="transmission-control-protocol-tcp">Transmission Control Protocol (TCP)</h4>
+<ul>
+<li>Transforms raw IP into full duplex reliable character stream</li>
+<li>Uses sliding window with selective-repeat protocol and conveys a number of important fields in its TCP frame header</li>
+<li><strong>6 Major Features</strong>:<ol>
+<li>Connection Orientation (one program must first request a connection)</li>
+<li>Reliable Connection Start-up (when two apps create a connection, they must both agree)</li>
+<li>Point to Point Communication (each communication session has exactly two end points)</li>
+<li>Full-Duplex Communication (single connection may be used for messages in both directions)</li>
+<li>Stream Interface (from applications view, data is sent and received as a continuous sequence of bytes)</li>
+<li>Graceful Connection Shutdown (TCP/IP guarantees to reliable deliver all pending data once a connection is closed by an endpoint)</li>
+</ol>
+</li>
+</ul>
+<h4 id="tcpip-transmissions">TCP/IP Transmissions</h4>
+<ul>
+<li>Due to massively variable distances</li>
+<li>Sliding window protocol and timeouts are employed to force re-transmissions, however as the distance can vary these must vary as well</li>
+<li>Therefore we use the equation:
+$SRTT = (\alpha * SRTT) + ((1 - \alpha) * RTT)$
+RTT = estimate of current round trip time for each connection
+SRTT = smoothed round trip time, minimising effects
+$\alpha$ = the smoothing factor (1 when the new value of RTT is ignored)&#39;</li>
+<li>SRTT estimates the average round trip time</li>
+</ul>
+<h4 id="tcpip-congestion-control">TCP/IP Congestion Control</h4>
+<ul>
+<li>TCP attempts to avoid congestion collapse by using end to end packet loss as a measure of congestion<ul>
+<li>TCP receiver <em>fills</em> the Window field of an ACK header to report how much additional buffer space is available for further data</li>
+<li>When a message is lost, the TCP sender could naively retransmit, instead it commences by sending a single packet, if ACK, then it transmits two, then four, etc... </li>
+<li>TCP/IP responds to congestion by backing off quickly and avoids further congestion by slowly increasing offered traffic</li>
+</ul>
+</li>
+</ul>
+<h4 id="network-application-program-interfaces-apis">Network Application Program Interfaces (APIs)</h4>
+<ul>
+<li>Calls to Unix <code>open()</code> which can then be <code>read()</code> and <code>write()</code></li>
+<li>It is preferable if the API to network I/O exhibit the same semantics as file or stream, however this is difficult:<ul>
+<li>client-server asymmetry</li>
+<li>network connections may be connection oriented or connectionless</li>
+<li>Identification is more important to network than for file operations</li>
+<li>Many I/O models presume continuous data stream</li>
+</ul>
+</li>
+</ul>
+<h4 id="berkeley-sockets-a-network-api">Berkeley Sockets (a network API)</h4>
+<ul>
+<li>Consists of 3 parts:<ul>
+<li>Socket layer provides the interface between user programs and networking</li>
+<li>Protocol layer supports different protocols in use (TCP/IP, etc.)</li>
+<li>The device driver supports physical devices (ethernet controllers, etc.)</li>
+</ul>
+</li>
+</ul>
+<h1 id="client-server">Client-Server</h1>
+<h4 id="clientserver-software-architectures">Client/Server Software Architectures</h4>
+<ul>
+<li>Client/server computing takes this a step farther by recognizing that those modules need not all be executed within the same memory space</li>
+<li>The calling module becomes the client (that which requests a service) and the called module becomes the server</li>
+</ul>
+<h4 id="partitioning-clientserver-responsibilities">Partitioning Client/Server Responsibilities</h4>
+<ul>
+<li>We must address a number of issues:<ul>
+<li>Is there a functional partition at all?</li>
+<li>Is there a data-driven partition?</li>
+<li>Is there an extensive use of global variables?</li>
+<li>Are there any hidden intra-application communication mechanisms (vars, excepts, or signals)?</li>
+</ul>
+</li>
+</ul>
+<h4 id="two-tier-and-three-tier-architecture">Two Tier and Three Tier Architecture</h4>
+<ul>
+<li>Two tier is one where a client talks directly to a server, typically used in small environments (&lt;50)</li>
+<li>Three tier introduces another server (agent) between the clients and the traditional service, providing various services (vertical scaling)</li>
+</ul>
+<h4 id="concurrency-in-servers">Concurrency in Servers</h4>
+<ul>
+<li>Concurrency is derived from using a non-queuing model of execution, either by using a copy of the server to support each client, or to provide faster response to each client</li>
+<li>Clients leave their concurrency to the OS</li>
+<li>Concurrent servers are multiple simultaneous requests, iterative is one at a time</li>
+</ul>
+<h4 id="the-internet-supervisor-daemon---inetd">The Internet Supervisor Daemon - <code>inetd</code></h4>
+<ul>
+<li>One problem with having many internetworking services supported, each OS host requires many daemons just waiting for incoming connections on their reserved port, consuming memory and a process slot</li>
+<li>Solution is a &#39;super daemon&#39; listening for incoming connections on many ports</li>
+</ul>
+<h1 id="architecture-independent-applications">Architecture Independent Applications</h1>
+<h4 id="automated-development-of-distributed-applications">Automated Development of Distributed Applications</h4>
+<p>The complications of layering in the OSI model come to a head in the Session Layer and a number of recent developments have &#39;bypassed&#39; many of the OSI layers
+These have been motivated by:</p>
+<ul>
+<li>Speed</li>
+<li>Distributed and replicated file systems</li>
+<li>Remote process invocation and control</li>
+<li>Network aware programming languages such as Java</li>
+<li>Increased need for distributed security</li>
+</ul>
+<h4 id="remote-procedure-call-rpc-paradigm">Remote Procedure Call (RPC) Paradigm</h4>
+<p>Based on the observation that procedure calls are a well understood mechanism for control transfer. The proposal is that procedure calls may be consistently extended to access remote environments (other machines).
+When a remote procedure call is invoked:</p>
+<ul>
+<li>The calling environment is suspended</li>
+<li>Any parameters are passed across the network to the remote environment</li>
+<li>Results are marshalled back to the caller and its execution resumes</li>
+</ul>
+<h4 id="rpc-execution-order">RPC Execution Order</h4>
+<ol>
+<li>The client calls a local procedure (<em>client stub</em>), which appears to the client that the stub is an actual procedure, the purpose is to package arguments to the remote procedure</li>
+<li>The network messages are sent to the local kernel using a sys call</li>
+<li>The network messages are then sent to a remote kernel </li>
+<li>The <em>server stub</em> has been waiting on any client&#39;s request, unmarshalling the arguments from the network messages and converts them to its format</li>
+<li>The SS then executes a local procedure call </li>
+<li>When the procedure finishes, it returns to the SS</li>
+<li>The SS then converts the return values if necessary and builds one or more network messages</li>
+<li>Messages traverse network</li>
+<li>The CS reads the replies from the local kernel</li>
+<li>The CS returns to the calling procedure, control flow is again in the clients code</li>
+</ol>
+<h4 id="sun-microsystems-rpc-compiler-rpcgen">SUN Microsystem&#39;s RPC Compiler <code>rpcgen</code></h4>
+<ul>
+<li>Many OS&#39;s provide RPC within their kernels and as a standard library of routines</li>
+<li>SUN&#39;s RPC package consists of <code>rpcgen</code> a compiler for creating remote procedure call server and client stubs, the XDR for encoding data into a portable manner</li>
+</ul>
+<h4 id="naming-and-interface-binding">Naming and Interface Binding</h4>
+<ul>
+<li>Most OSs now supporting RPCs use a replicated database used to store server addresses</li>
+<li>When a server restarts (boots) it informs the database that it is alive and passes the programs number, version and port number</li>
+</ul>
+<h1 id="security-of-tcpip">Security of TCP/IP</h1>
+<p>The 4 layers of the TCP/IP suite, has multiple potential vulnerabilities:</p>
+<ul>
+<li><strong>Application Layer</strong>: such as FTP, HTTP and SMTP run on machines to which attackers may not otherwise have physical access. Each application service may need to authenticate its remote client, and may use local OS authentication to perform this. Individual applications offering the networked services are themselves also vulnerable</li>
+<li><strong>Transport Layer</strong>: primarily provided by the reliable, streaming transport control protocol (TCP) and user datagram protocol (UDP) meet the data delivery requirements of most internet applications, however, apps and OSs expect the protocol to perform in certain ways, so incorrect interpretation of protocol, or attacks makes them not work as expected or at all. </li>
+<li><strong>Internet Layer</strong>: consists of the Internet Protocol (IP) and Internet Control Message Protocol (ICMP) provide the actual routed delivery of messages between source and destination. IPv4 is particularly vulnerable to attack and may be exploited to not deliver messages, or deliver to the wrong destination, etc. </li>
+<li><strong>Physical Layer</strong>: are not strictly part of the TCP/IP suite, but define how packets or frames are received via hardware and provided to the IP layer above. By its nature, interface hardware must see all packets destined for the interface.</li>
+</ul>
+<h3 id="packet-sniffing">Packet Sniffing</h3>
+<ul>
+<li>Most computer networks consist of many personal computers or workstations connected via a shared LAN or WLAN segments. To capture the information traversing the network is termed sniffing. LAN topology, specifically Ethernet, works by transmitting addressed packets via shared cable. </li>
+<li>Two main problems with Ethernet&#39;s approach:<ul>
+<li>Most Ethernet NICs (network interface card) can be placed in promiscuous mode, which results in all observed packets being sent to the OS</li>
+<li>Most Ethernet NICs permit their NIC address to be modified, so one Ethernet NIC could be given the MAC address of another</li>
+</ul>
+</li>
+<li>A variety of hardware and software tools are termed packet sniffers:<ul>
+<li>Packet sniffer denotes any hardware or software tool that can capture packets from a network</li>
+<li>Network analysers are tools that monitor network traffic and devices with the goal of alerting the network manager of problems</li>
+<li>Protocol analysers are tools that capture network packets, providing some level of formatting for those packets, allowing the user to analyse/visualise packets post-hoc</li>
+</ul>
+</li>
+<li>Typical uses of such programs:<ul>
+<li>Automatic sifting of clear-text passwords and usernames</li>
+<li>Conversion of data to human readable format so that people can read the traffic</li>
+<li>Fault analysis to discover problems in the network</li>
+<li>Network intrusion detection</li>
+<li>Network traffic logging</li>
+</ul>
+</li>
+</ul>
+<h3 id="tcpip-port-scanning">TCP/IP Port Scanning</h3>
+<ul>
+<li>An attacker tries to identify which services are supported from a potential target host. </li>
+<li>Can connect to an open port.</li>
+</ul>
+<h3 id="stealth-port-scanning">Stealth Port Scanning</h3>
+<ul>
+<li>Involves searching for open ports, but without actually creating a connection, nothing is logged by half-open scanning.</li>
+</ul>
+<h3 id="ip-spoofing">IP Spoofing</h3>
+<ul>
+<li>Allows an intruder on the internet to effectively impersonate a local system&#39;s IP address. </li>
+<li>Create and send malformed IP packets.</li>
+</ul>
+<h3 id="udp-packet-spoofing">UDP Packet Spoofing</h3>
+<ul>
+<li>UDP is a lightweight protocol built on IP. An attacker may attack a UDP service because of these properties - the attacker is unconcerned about reply packets.</li>
+</ul>
+<h3 id="dos-attacks">DoS Attacks</h3>
+<ul>
+<li>Using source address spoofing to send thousands of packets to a target system, characterised by attackers&#39; explicit attempt to prevent or delay legitimate users from using a service</li>
+</ul>
+<h4 id="smurf-ddos-attack">Smurf DDoS Attack</h4>
+<ul>
+<li>The attacker provides a spoofed source address, when sending an ICMP echo, or ping, to an IP broadcast address as the destination.</li>
+</ul>
+<h3 id="security-at-network-boundaries">Security at Network Boundaries</h3>
+<ul>
+<li>The greatest opportunity is provided to an attacker who connects to the LAN from the wider internet.</li>
+<li>Attacks from the internet can attempt to bypass the user or system-level security of a single machine, or possibly undertake a DoS attack on the LAN itself. </li>
+<li>Specifically we should:<ul>
+<li>Control network traffic based on both senders&#39; and receivers&#39; network IP address</li>
+<li>Control network traffic based on requested services (IP Ports)</li>
+<li>Not expose our LAN topology to the wider-internet, hiding hostnames, addresses and available services</li>
+<li>Constrain some network traffic based on its content</li>
+<li>Only permit internal access from remote users and services, based on their verified identities and possibly location</li>
+<li>Log all internet connections, attempts and traffic</li>
+</ul>
+</li>
+</ul>
+<h3 id="packet-filtering-at-network-boundaries">Packet Filtering at Network Boundaries</h3>
+<ul>
+<li><em>Firewall</em> describes any network device, appliance or specially configured computer which protects the boundary of an internal network. </li>
+<li>A firewall may be:<ul>
+<li>part of a traditional single workstation protecting itself</li>
+<li>a computer or device protecting several other workstations</li>
+<li>a dedicated device doing nothing else but protecting other hosts</li>
+</ul>
+</li>
+</ul>
+<h4 id="possible-packet-filtering-criteria">Possible Packet Filtering Criteria</h4>
+<ul>
+<li>By examining the headers of TCP/IP traffic, we can detect obviously falsified traffic:<ul>
+<li>filter on each IP packet&#39;s source address<ul>
+<li>i.e. a packet arriving outside out internal network and announce their source address as being internal, has probably spoofed source addresses</li>
+</ul>
+</li>
+<li>filter on each IP packet&#39;s destination address</li>
+<li>filter based in specific low level routing or transport protocols</li>
+<li>filter based on application protocols<ul>
+<li>i.e. letting HTTP and FTP requests leave, but not NFS to enter</li>
+</ul>
+</li>
+<li>filter based on recent activity</li>
+</ul>
+</li>
+</ul>
+<h3 id="developing-a-firewall-policy">Developing a Firewall Policy</h3>
+<ul>
+<li>Simplifies and provides a consistent and consistently applied practice deciding what traffic to permit and what to filter</li>
+</ul>
+<h3 id="iptables"><code>iptables</code></h3>
+<ul>
+<li>State-of-the-art in programmable firewall software, provides stateful control over network traffic</li>
+<li>Consists of two software components:<ul>
+<li><code>iptables</code> application program, controlling the set of rules and policies to be enforced</li>
+<li><code>netfilter</code> software configured as part of an OS kernel to control IP traffic on several network interfaces</li>
+</ul>
+</li>
+<li>Lifetime of a packet as it enters and traverses a firewall:<ul>
+<li>the packet could have originated on the firewall host and be destined for another host, <code>iptables</code> filters these packets before they are retransmitted</li>
+<li>the packet could have originated from outside the firewall host and be destined for processes on the firewall host</li>
+<li>the packet could have been originated from outside the firewall host and be destined for another host, <code>iptables</code> filters these packets as soon as the packet arrives via an incoming interface</li>
+</ul>
+</li>
+</ul>
+<h3 id="ip-masquerading-or-network-address-translation-nat">IP Masquerading or Network Address Translation (NAT)</h3>
+<ul>
+<li>A technique employed within a firewall or border gateway to translate one set of IP address to another</li>
+<li>Primary motivations for NAT are:<ul>
+<li>your network provider may only provide you with a single IP address to use</li>
+<li>it simplifies the later growth and redesign of a network</li>
+<li>external attackers cannot learn the topology of your internal network unless they penetrate your firewall</li>
+</ul>
+</li>
+</ul>
+<h3 id="connection-tracking">Connection Tracking</h3>
+<ul>
+<li>The ability for a firewall to maintain state information about connections - source and destination IP address and port number pairs, protocol types, connection state and timeouts</li>
+<li>Firewalls able to do this are termed stateful</li>
+</ul>
+<h1 id="cryptography">Cryptography</h1>
+<h3 id="isoosi-security-architecture">ISO/OSI Security Architecture</h3>
+<ul>
+<li>Includes the requirements:<ul>
+<li><strong>Data Confidentiality</strong> - protects data as it traverses the network from being disclosed to incorrect parties.</li>
+<li><strong>Data Integrity</strong> - protects the data from the modification or removal while in the network</li>
+<li><strong>Data Origin Auth</strong> - validates the sender of the data</li>
+<li><strong>Data Receiver Auth</strong> - validates the receiver of the data</li>
+<li><strong>Peer-entity Auth</strong> - validates all network components through which a data stream must travel</li>
+<li><strong>Non-repudiation</strong> - creates and verifies evidence that the claimed sender sent the data and likewise with the receiver</li>
+</ul>
+</li>
+</ul>
+<h3 id="where-should-encryption-be-performed">Where should encryption be performed?</h3>
+<ul>
+<li>Users encrypting individual files stored in a standard file-system</li>
+<li>File-systems encrypting all data before writing it to disk</li>
+<li>Datalink and network layers in switches and routers (VPNs, etc.)</li>
+<li>Session layer with end-to-end data conversion (SSL, etc.)</li>
+<li>Application layer in programs like email agents (PGP, etc.)</li>
+</ul>
+<h3 id="terminology">Terminology</h3>
+<ul>
+<li>Plain Text -&gt; Cipher Text</li>
+<li>The intended receiver should be able to quickly and correctly reverse</li>
+<li>Following attacks are common with the goal of determining cryptographic keys:<ul>
+<li>known plaintext attack</li>
+<li>chosen plaintext attack</li>
+<li>differential analysis</li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
+</body>
+</html>

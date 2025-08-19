@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CITS3403 Notes</title>
+    <meta name="description" content="Uni Notes" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheet.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="./index.html">MonkeInABox</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="./designs.html">./Train Maps</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./banddesigns.html">./Band Designs</a>
+      </li>
+      <li class="nav-item" style="background-color: rgb(13, 14, 15); border-radius: 8px 8px 0px 0px;">
+        <a class="nav-link" href="./notes.html">./Notes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./setlists.html">./Setlists</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://beepbeepbeepboom.nekoweb.org/">./Goblin's Den</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <div>
+        <h1 class="text-center">CITS3403 Notes</h1>
+        <br><br><br>
+        <div style="text-decoration: none;"><p><a class="link" href="./notes.html">cd -</a></p>
+<blockquote>
+<p>Written by Jeremy Butson 2024 based on UWA CITS3403 Lecture Notes</p>
+</blockquote>
+<h1 id="introduction">Introduction</h1>
+<h2 id="">==================================</h2>
+<h2 id="brief-history">Brief History:</h2>
+<ul>
+<li>DoD created ARPA, now DARPA:
+wanted communications, program sharing, remote computer access</li>
+<li>NSFnet - 1986:
+  National Science Foundation
+  Initially connected 5 supercomputer centres, spreading to other academic institutes and labs
+  Became the network for all by early 90s, the internet</li>
+<li>The Internet:
+  If computers are close together; local area network (LAN), wide area (WAN)</li>
+</ul>
+<h2 id="how-the-internet-works">How the Internet Works:</h2>
+<ul>
+<li>Protocols:
+Computers &quot;speak&quot; a common language
+    signal another computer
+    identify requesting computer
+    transmit messages in blocks
+    retransmit if messages fail
+    detect errors
+    signal transmission complete
+    terminate connection</li>
+<li>TCP/IP:
+  Transmission Control Protocol/Internet Protocol</li>
+</ul>
+<h2 id="client-server-architecture">Client-Server Architecture:</h2>
+<ul>
+<li>User accesses the web via software (browser)</li>
+<li>Browsers locate and display info</li>
+<li>browser communicates user requests to the server</li>
+<li>Web page is delivered</li>
+</ul>
+<h1 id="html">HTML</h1>
+<h2 id="-1">=====================================</h2>
+<h2 id="hyper-text-markup-language">Hyper Text Markup Language:</h2>
+<ul>
+<li>General layout of documents</li>
+<li>Clear specifications on error handling</li>
+<li>Not breaking the web (backward compatibility)</li>
+<li>Aiming at easier authoring of web apps</li>
+</ul>
+<h2 id="basic-syntax">Basic Syntax:</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Heading&lt;/h1&gt;
+    &lt;p&gt;Paragraph&lt;/p&gt;
+    &lt;table border=&quot;1&quot; cellpadding=&quot;1&quot;&gt;...&lt;/table&gt;
+    &lt;!-----COMMENT------&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="font-styles-and-sizes">Font Styles and Sizes:</h2>
+<ul>
+<li>Generally just do in [[3. CSS|CSS]] however is possible in HTML:</li>
+</ul>
+<pre><code class="language-html">&lt;b&gt; for bold &lt;/b&gt;
+&lt;i&gt; italics &lt;/i&gt;
+&lt;big&gt; larger &lt;/big&gt;
+&lt;small&gt; smaller &lt;/small&gt;
+&lt;tt&gt; monospace &lt;/tt&gt;
+
+&amp;amp, &amp;lt, &amp;gt, &amp;quot, &amp;apos, &amp;frac34, &amp;deg, &amp;nbsp
+</code></pre>
+<h2 id="inserting-images">Inserting Images:</h2>
+<pre><code class="language-html">&lt;img src=&quot;image.png&quot; alt=&quot;image text&quot; style=&quot;width:300px;height:200px;&quot;&gt;
+</code></pre>
+<h2 id="hypertext-links">Hypertext Links:</h2>
+<p><code>&lt;a href=&quot;Link&quot;&gt;to page&lt;/a&gt;</code></p>
+<h2 id="lists">Lists:</h2>
+<pre><code class="language-html">&lt;h3&gt;Shopping List:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Milk&lt;/li&gt;
+        &lt;li&gt;Eggs&lt;/li&gt;
+    &lt;/ul&gt;
+</code></pre>
+<h2 id="tables">Tables:</h2>
+<pre><code class="language-html">&lt;table style=&quot;width:100%&quot; border=&quot;border&quot;&gt;  
+  &lt;tr&gt;  
+    &lt;th&gt;Company&lt;/th&gt;  
+    &lt;th&gt;Contact&lt;/th&gt;  
+    &lt;th&gt;Country&lt;/th&gt;  
+  &lt;/tr&gt;  
+  &lt;tr&gt;  
+    &lt;td&gt;Alfreds Futterkiste&lt;/td&gt;  
+    &lt;td&gt;Maria Anders&lt;/td&gt;  
+    &lt;td&gt;Germany&lt;/td&gt;  
+  &lt;/tr&gt;  
+  &lt;tr&gt;  
+    &lt;td&gt;Centro comercial Moctezuma&lt;/td&gt;  
+    &lt;td&gt;Francisco Chang&lt;/td&gt;  
+    &lt;td&gt;Mexico&lt;/td&gt;  
+  &lt;/tr&gt;  
+&lt;/table&gt;
+</code></pre>
+<p>![[Pasted image 20240226104914.png]]</p>
+<h2 id="layout-in-html5">Layout in HTML5:</h2>
+<p>![[Pasted image 20240226105135.png]]</p>
+<h2 id="forms">Forms:</h2>
+<ul>
+<li>A way to get information from the browser to a server</li>
+<li>HTML has tags for widgets such as checkboxes</li>
+<li>When &quot;SUBMIT&quot; is clicked, the values are sent to a server</li>
+</ul>
+<pre><code class="language-html">&lt;form action=&quot;/action_page.php&quot;&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Personal Information:&lt;/legend&gt;
+        First Name:&lt;br&gt;
+        &lt;input type=&quot;text&quot; name=&quot;firstname&quot; value=&quot;mickey&quot;&gt;
+        &lt;br&gt;
+        Last Name:&lt;br&gt;
+        &lt;input type=&quot;text&quot; name=&quot;lastname&quot; value=&quot;mouse&quot;&gt;
+        &lt;br&gt;&lt;br&gt;
+        &lt;input type=&quot;submit&quot; value&quot;Submit&quot;&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+<ul>
+<li>Submit does two things:<ul>
+<li>encodes the data of the form</li>
+<li>requests that the server execute the server-resident program specified as the value of action attribute of <code>&lt;form&gt;</code></li>
+</ul>
+</li>
+<li>HTML5 browsers support basic validation on email, url and tel types:<ul>
+<li><code>&lt;input id=&quot;phone&quot; name=&quot;phone&quot; pattern=&quot;\d{8}&quot; type=&quot;tel&quot;&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="css">CSS</h1>
+<h2 id="-2">=====================================</h2>
+<p><strong>CSS</strong> or Cascading Style Sheets is:</p>
+<ul>
+<li>a stylesheet language for the web</li>
+<li>used to specify the presentation (layout and style) of markup languages</li>
+<li>can be applied to any XML documents as well as [[2. HTML|HTML]]</li>
+</ul>
+<pre><code class="language-css">body {
+    backgroudn-color: blue;
+    color: white;
+    text-align: center;
+    font-family: verdana;
+    font-size: 20px;
+}
+</code></pre>
+<h2 id="advantages-of-css">Advantages of CSS:</h2>
+<ul>
+<li>Separation of content and presentation</li>
+<li>Advantages for web:<ul>
+<li>Speed</li>
+<li>Maintainability</li>
+<li>Accessibility</li>
+<li>Portability</li>
+<li>Reduced work</li>
+<li>Consistency</li>
+</ul>
+</li>
+</ul>
+<h2 id="why-cascading">Why Cascading?</h2>
+<ul>
+<li>3 types:<ul>
+<li>Inline - applies to a single tag only</li>
+<li>Document - &lt;head&gt; elements and applies to whole document</li>
+<li>External - separate files, usually on server and can be applied to any number of documents in their &lt;head&gt; element</li>
+</ul>
+</li>
+<li>Lowest level has precedence</li>
+</ul>
+<h2 id="inline">Inline:</h2>
+<ul>
+<li>Attribute of almost any tag</li>
+</ul>
+<pre><code class="language-html">&lt;p style=&quot;color:yellow&quot;&gt;styled text&lt;/p&gt;
+</code></pre>
+<h2 id="document">Document:</h2>
+<pre><code class="language-html">&lt;style&gt;
+    p {
+        color:yellow;
+    }
+&lt;/style&gt;
+</code></pre>
+<h2 id="external">External:</h2>
+<ul>
+<li>Has to be specified in head of HTML doc</li>
+</ul>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot;&gt;&lt;/link&gt;
+</code></pre>
+<h2 id="selectors">Selectors:</h2>
+<ul>
+<li>Determines which elements a style applies to</li>
+</ul>
+<pre><code class="language-css">*{...} UNIVERSAL
+p{...} ELEMENT
+.important{...} CLASS
+.important:hover{...} PSEUDO-CLASS
+important::first-letter{...} PSEUDO-ELEMENT
+s1,s2,s3{...} GROUP
+</code></pre>
+<h2 id="property-groups">Property Groups:</h2>
+<ul>
+<li>Main Ones:<ul>
+<li>text<ul>
+<li>font-size: ;</li>
+<li>font-style: italic;</li>
+<li>font-weight: bold;</li>
+<li>font: list of properties;</li>
+<li>text-decoration: none;</li>
+<li>letter-spacing: 2;</li>
+<li>text-indent: 20%;</li>
+<li>text-align: left;</li>
+<li>float: left; (to get text to flow around image)</li>
+</ul>
+</li>
+<li>background</li>
+<li>borders<ul>
+<li>border-style: solid;</li>
+<li>border-width: medium;</li>
+<li>border-color: red;</li>
+</ul>
+</li>
+<li>the box model<ul>
+<li>padding-top:30px; (inside border)</li>
+<li>margin-top:20px; (outside border)</li>
+<li>width / height:20px; (content)</li>
+</ul>
+</li>
+<li>color</li>
+<li>table</li>
+<li>list<ul>
+<li>list-style-type: square;</li>
+</ul>
+</li>
+<li>position<ul>
+<li>static = go with normal</li>
+<li>relative = element is offset relative to its normal flow position</li>
+<li>absolute = element is offset relative to its most recently positioned ancestor. Element is removed entirely from normal flow</li>
+<li>fixed = element offset relative to the fixed viewport</li>
+<li>sticky = switches between relative and fixed depending on scroll position</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="bootstrap">Bootstrap</h1>
+<h2 id="-3">=================================</h2>
+<p>A [[3. CSS|CSS]] framework. To include in your page, you can download and host the code yourself, or reference a Content Delivery Network in the header of your webpage. Bootstrap consists of a CSS, JavaScript and optional theme files. </p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;bootstrapfile.css&quot;&gt;
+    &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;bootstrapfile.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+<h2 id="grid-system">Grid System:</h2>
+<ul>
+<li>Bootstrap uses rows of 12 columns for layout. 
+<code>&lt;div class=&quot;col-sm-3&gt;...&lt;/div&gt;  </code>&lt;div class=&quot;col-sm-3&gt;...</div></li>
+<li>fills the whole screen</li>
+<li>columns can be nested, so a span of eight columns can be divided into 12</li>
+</ul>
+<h2 id="tables-1">Tables:</h2>
+<pre><code class="language-html">&lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;First column, first row&lt;/td&gt;
+        ...
+&lt;/tbody&gt;
+</code></pre>
+<h2 id="more-info-yay-i-love-lecturers">More Info (Yay I love lecturers):</h2>
+<ul>
+<li><a href="https://www.w3schools.com/bootstrap5/">https://www.w3schools.com/bootstrap5/</a></li>
+</ul>
+<h1 id="javascript">JavaScript</h1>
+<h2 id="-4">===================================</h2>
+<h2 id="what-is-javascript">What is JavaScript?</h2>
+<ul>
+<li>A.K.A. JS</li>
+<li>High-level, dynamic, untyped and interpreted language</li>
+<li>An alternative to server-side programming<ul>
+<li>servers are often overloaded</li>
+<li>client processing is quicker</li>
+</ul>
+</li>
+<li>Can interact with the internal model of the web page to alter the page dynamically</li>
+</ul>
+<h2 id="events">Events:</h2>
+<ul>
+<li>User&#39;s actions are referred to as <em>events</em></li>
+<li>Such as mouse-clicking/interacting</li>
+</ul>
+<h2 id="executing-js">Executing JS:</h2>
+<ul>
+<li>The browser: every modern browser can execute JS, however a HTML file must call the JS function</li>
+<li>NodeJS: a server-side JS environment, more like a traditional console (e.g. python)</li>
+</ul>
+<h2 id="js-on-the-browser">JS on the Browser:</h2>
+<ul>
+<li>Several ways to include JS:<ul>
+<li>Inline in a tag attribute (<code>on click</code>)</li>
+<li>Included in the document in the body of a <code>&lt;script&gt;</code> tag</li>
+<li>From an external file referenced via a URL, using <code>src</code> attribute of the <code>&lt;script&gt;</code> tag</li>
+</ul>
+</li>
+</ul>
+<h2 id="js-io">JS I/O:</h2>
+<ul>
+<li>The standard output for JavaScript embedded in a browser is the window displaying the page in which the JavaScript is embedded</li>
+<li>Writing logs or error messages to the document object is now considered bad practice. For simple debugging use <code>console.log</code>, which outputs to console (WOW!)</li>
+<li>To output information to the user, you can use the <code>alert</code> or <code>confirm</code> </li>
+<li>To get input from user, you can use <code>prompt</code></li>
+</ul>
+<h2 id="basics-of-javascript">Basics of JavaScript</h2>
+<h2 id="variables">Variables:</h2>
+<ul>
+<li>variable names must start with a dollar <code>$</code> symbol, an <code>_</code> or any letter and must continue with any combination of these plus numbers. They are usually written in <code>camelCase</code></li>
+<li>Variable assignment is performed using <code>=</code></li>
+<li>Variables are declared using <code>let</code>, <code>const</code>, <code>var</code> or nothing at all:</li>
+</ul>
+<pre><code class="language-js">let z = x + y;
+const x = 6;
+var stopFlag = true;
+zz = z;
+</code></pre>
+<ul>
+<li>Good rule of thumb is use <code>let</code> by default</li>
+</ul>
+<h2 id="syntax">Syntax:</h2>
+<p><code>// single line comment</code></p>
+<pre><code class="language-js">/*
+multiple
+line
+comment
+*/
+</code></pre>
+<ul>
+<li>Statements <em>should</em> be terminated with a <code>;</code>, however the interpreter will insert the semicolon, but you should not rely on it as it may not put it where you want</li>
+</ul>
+<h2 id="primitives-and-objects">Primitives and Objects:</h2>
+<ul>
+<li>Primitive types: Number, String, Boolean, null, undefined</li>
+<li>Some object types: Function, Array, Date, Math, etc.</li>
+<li>Object properties are accessed by <code>.</code><ul>
+<li><code>Math.sin()</code></li>
+</ul>
+</li>
+<li>Objects are automatically collected when there no longer exists any reference to them</li>
+</ul>
+<h2 id="numbers">Numbers:</h2>
+<ul>
+<li>All <code>Number</code>s are represented internally as double-precision floating-point</li>
+<li>All standard arithmetic operators, incrementors and compound assignment operators are available in JavaScript</li>
+<li>Convert a string to an integer by using <code>parseInt(&quot;124&quot;)</code></li>
+<li>Invalid operators return a special value <code>NaN</code> or &quot;Not a Number&quot;<ul>
+<li>This can be checked via <code>isNaN(value)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="strings">Strings:</h2>
+<ul>
+<li>A string literal can either be double or single quotes</li>
+<li><code>\\</code> to use a literal backslash</li>
+<li><code>\n</code> for new line</li>
+<li><code>\t</code> for tab</li>
+<li>Characters are single length strings</li>
+</ul>
+<pre><code class="language-js">charAt(number_value); //returns character at spot
+indexOf(&quot;a&quot;); //returns index of character
+substring(0, 3); //returns substring from position 0 to 3
+toLowerCase();
+toUpperCase();
+toString(1234); //returns string of the number
+&quot;con&quot; + &quot;cat&quot; = &quot;concat&quot;;
+</code></pre>
+<h2 id="booleans">Booleans:</h2>
+<ul>
+<li>JavaScript is much the same as other languages, return values of <code>true</code> and <code>false</code></li>
+<li><code>!</code>, <code>&amp;&amp;</code> and <code>||</code> can all be used</li>
+<li>These are also equal to <code>1</code> and <code>0</code> respectively</li>
+</ul>
+<h2 id="loops">Loops:</h2>
+<pre><code class="language-js">let triangle = 0;
+for (let i = 1; i &lt;= 3; i++) {
+    triangle += i;
+}
+//triangle = 6
+</code></pre>
+<h2 id="arrays">Arrays:</h2>
+<ul>
+<li>Lists of elements indexed</li>
+<li>Begin at zero, size can be modified</li>
+</ul>
+<pre><code class="language-js">var index;
+var fruits = [&quot;banana&quot;, &quot;orange&quot;];
+for (index = 0; index &lt; fruits.length; index++){
+    text += fruits[index];
+}
+
+
+let a = Array(10);
+//makes an array of length 10
+let b = Array();
+//creates an empty array
+let c = Array(10, 2, &quot;three&quot;, &quot;four&quot;);
+//create array of length 4 with the 4 elements contained
+</code></pre>
+<p>![[Pasted image 20240314152122.png]]</p>
+<h2 id="functions">Functions</h2>
+<pre><code class="language-js">function &lt;name&gt; (&lt;parameters&gt;) {
+    &lt;statements&gt;
+}
+</code></pre>
+<ul>
+<li>Parameters do not have a defined type</li>
+<li>Parameters named in function definitions are <em>formal parameters</em></li>
+<li>Parameters passed in are <em>actual parameters</em></li>
+<li>A property array called arguments holds all the actual parameters:</li>
+</ul>
+<pre><code class="language-js">function findMax(){
+    let max = -infinity;
+    for (let i = 0; i &lt; arguments.length; i++){
+        if (arguments[i]  &gt; max){
+            max = arguments[i];
+        }
+    }
+    return max;
+}
+
+findMax(4,5,6);
+</code></pre>
+<h2 id="scopes">Scopes</h2>
+<ul>
+<li>The scope is the range of statements over which it is visible</li>
+<li>3 types:<ul>
+<li>Global</li>
+<li>Function</li>
+<li>Block</li>
+</ul>
+</li>
+<li>Different variable declarations differ what scope:<ul>
+<li><code>const</code> and <code>let</code> have block-level scope</li>
+<li><code>let</code> can be changed within the block</li>
+<li><code>var</code> outside of a function has global scope, within, they can only be used within that function</li>
+<li>Undeclared variables can be used <em>anywhere</em>, <strong>DON&#39;T DO IT</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="inner-functions">Inner Functions:</h2>
+<ul>
+<li>A function inside another function</li>
+<li>Allow us to use <em>closures</em><ul>
+<li>A closure is the local variables for a function - kept alive after the function has been returned</li>
+</ul>
+</li>
+</ul>
+<h2 id="objects">Objects</h2>
+<ul>
+<li>Collections of name-value pairs:<ul>
+<li>names are Strings</li>
+<li>values can be any JS value</li>
+</ul>
+</li>
+<li>Properties can be accessed using <code>.</code><ul>
+<li><code>Obj.name = &quot;Matthew Daggit&quot;</code></li>
+</ul>
+</li>
+<li>Alternatively:<ul>
+<li><code>Obj[&quot;name&quot;] = &quot;Matthew Daggit&quot;</code></li>
+</ul>
+</li>
+<li><code>Object.prototype</code> allows you to modify an object&#39;s prototype at run time</li>
+<li>Constructors are functions that create and initialize properties for new objects</li>
+</ul>
+<pre><code class="language-js">    function Person(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+    }
+    
+    var myFather = new Person(&quot;John&quot;, &quot;Doe&quot;, 50, &quot;blue&quot;);
+</code></pre>
+<ul>
+<li><code>this</code> refers to the current object, in the scope of a browser, that means the window displaying HTML</li>
+</ul>
+<h1 id="dom">DOM</h1>
+<h2 id="-5">===================================</h2>
+<blockquote>
+<p>The Document Object Model</p>
+</blockquote>
+<ul>
+<li>Is a platform and language-neutral interface that will allow programs and scripts to dynamically access and update content, structure and style of documents</li>
+<li>It mimics the &quot;tree structure&quot;</li>
+</ul>
+<h2 id="the-bom-execution-environment">The BOM Execution Environment</h2>
+<ul>
+<li>The DOM tree is just one subsection of a larger <em><strong>Browser Object Model</strong></em> tree that also includes nodes for the execution environment in a browser, which includes:<ul>
+<li>The type of browser</li>
+<li>Cookies</li>
+<li>History</li>
+<li>Screen size</li>
+<li>Geolocation</li>
+<li>Local storage</li>
+</ul>
+</li>
+</ul>
+<h2 id="accessing-elements">Accessing Elements</h2>
+<p>`x.getElementsByTagName(&quot;p&quot;)</p>
+<ul>
+<li>will return <code>&lt;p&gt;</code> elements inside the node represented by the element object x</li>
+<li>also:
+<code>getElementById(&quot;imageOne&quot;)</code></li>
+</ul>
+<h2 id="dom-modification">DOM Modification</h2>
+<pre><code class="language-js">insertBefore
+replaceChild
+removeChild
+appendChild
+open()
+close()
+write()
+writeIn()
+</code></pre>
+<h2 id="bom-functions">BOM Functions</h2>
+<p><code>window.navigator</code> object contains information about browser:</p>
+<pre><code class="language-js">appCodeName //code name of browser
+appName //name of browser
+appVersion //version of browser
+cookieEnabled //determines whether cookies are enabled
+geolocation //returns a geolocation object, used to find user&#39;s positio
+language 
+onLine //determines whether the browser is online
+platform 
+product //returns engine name
+userAgent
+</code></pre>
+<p><code>window.history</code> contains methods for moving backwards and forwards:</p>
+<pre><code class="language-js">back()
+forward()
+go()
+length
+</code></pre>
+<h1 id="client-side-javascript">Client-Side JavaScript</h1>
+<h2 id="-6">===================================</h2>
+<h2 id="event-driven-programming">Event-Driven Programming:</h2>
+<ul>
+<li>Flow of program is determined by sensor outputs or user actions</li>
+<li>Program loop:<ul>
+<li>event detection</li>
+<li>event handling</li>
+</ul>
+</li>
+<li>Common events:</li>
+</ul>
+<pre><code class="language-js">onblur
+onchange
+onclick
+ondblclick
+onfocus
+onkeydown
+onkeypress
+onkeyup
+onload
+onmousedown
+onmousemove
+onmouseout
+onmouseover
+onmouseup
+onreset
+onselect
+onsubmit
+onunload
+</code></pre>
+<ul>
+<li>Usually registered by:</li>
+</ul>
+<pre><code class="language-js">button = document.getElementsById(&quot;myButton&quot;);
+button.addEventListener(&quot;click&quot;, myHandler, false);
+#where myHandler is the code and there is a myButton in the HTML
+#false means by default it &quot;bubbles up&quot;
+</code></pre>
+<h2 id="what-is-j-query">What is J-Query?</h2>
+<ul>
+<li>Makes DOM manipulation and other client-side JavaScript much more concise and easier to write</li>
+<li>Imported by:</li>
+</ul>
+<pre><code class="language-html">&lt;script src = &quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<ul>
+<li>Basic jQuery syntax: <code>$(selector).action()</code><ul>
+<li><code>$</code> is an abbreviation for jQuery</li>
+<li><code>selector</code> is a query to find HTML elements (syntax is a superset of CSS)</li>
+<li><code>action</code> is a jQuery function such as:<ul>
+<li><code>text()</code></li>
+<li><code>html()</code></li>
+<li><code>val()</code></li>
+<li><code>attr()</code></li>
+</ul>
+</li>
+<li>Can also be used for DOM like events:</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">$(&quot;p&quot;).click(() =&gt; {
+    $(this).slideDown(&quot;slow&quot;);
+})
+$(&quot;p&quot;).on( {
+    mouseenter:function(){
+        $(this).css(&quot;background-color&quot;, &quot;lightgray&quot;);
+    },
+    mouseleave:function(){
+    
+    },
+});
+</code></pre>
+<ul>
+<li>Commonly <code>$(document).ready(() =&gt; {</code> wraps jQuery so that it is waiting until the document is fully loaded.</li>
+</ul>
+<h1 id="http-and-ajax">HTTP and AJAX</h1>
+<h2 id="-7">===================================</h2>
+<h2 id="http-requests">HTTP Requests</h2>
+<h4 id="structure-of-http-requests-and-responses">Structure of HTTP Requests and Responses</h4>
+<ul>
+<li>Updating when something happens on a server (a message is sent in a forum, submitting a form, etc.)</li>
+<li>Client-server-architecture: Client sends a HTTP request to a server, server receives request, formulates and sends a response, protocol becomes once again stateless.</li>
+<li>Methods include:<ul>
+<li>GET, POST, UPDATE, DELETE</li>
+</ul>
+</li>
+<li>This is included in the request, as long with the URL and message body</li>
+<li>A response reports the status (200 == OK, 404 file not found), a header and message body</li>
+</ul>
+<pre><code class="language-js">//GET requests
+xhttp.open(&quot;GET&quot;, &quot;demo_get2.asp?fname=Henry&amp;lname=Ford&quot;, true); //true is whether its asynchronous
+xhttp.send();
+
+//POST requests
+xhttp.open(&quot;POST&quot;, &quot;ajax_test.asp&quot;, true);
+xhttp.setRequestHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);
+xhttp.send(&quot;fname=Henry&amp;lname=Ford&quot;);
+
+//PUT request to replace data on server
+
+//readystate is the progress of req, onreadystatechange is a callback func
+function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readystate == 4 &amp;&amp; this.status == 200) { //status == OK
+            document.getElementById(&quot;demo&quot;).innerHRML = this.responseText;
+        }
+    };
+    xhttp.open(&quot;GET&quot;, &quot;ajax_info.txt&quot;, true);
+    xhttp.send();
+}
+</code></pre>
+<h4 id="asynchronous-communication">Asynchronous Communication</h4>
+<ul>
+<li>We do not know when/if the server will respond</li>
+<li>JavaScript is single-threaded so must run each statement in order, but the environment that JavaScript runs in is not single-threaded, so we can write a function with a function as the parameter</li>
+</ul>
+<h4 id="xmlhttprequests">XMLHttpRequests</h4>
+<ul>
+<li>Modern browsers have this object to handle requests to and responses from a server</li>
+</ul>
+<h4 id="jquery-and-http-requests">jQuery and HTTP Requests</h4>
+<ul>
+<li>jQuery <code>get</code> function will send a GET request to a URL and passes the data to a callback function.</li>
+</ul>
+<pre><code class="language-js">$(&quot;button&quot;).click(function() {
+    $.post(&quot;demo_test_post.asp&quot;, fucntion(data, status){
+        alert(&quot;Data: &quot; + data + &quot;\nStatus: &quot; + status);
+    });
+});
+</code></pre>
+<ul>
+<li>jQuery <code>post</code> function will send a POST request, with data to a URL and passes the response to a callback function.</li>
+</ul>
+<pre><code class="language-js">$(&quot;button&quot;).click(function() {
+    $.post(&quot;demo_test_post.asp&quot;,
+    {
+        name: &quot;Donald Duck&quot;,
+        city: &quot;Duckburg&quot;
+    },
+    function(data, status) {
+        alert(&quot;Data: &quot; + data + &quot;\nStatus: &quot; + status);
+    });
+});
+</code></pre>
+<h2 id="ajax">AJAX</h2>
+<ul>
+<li>Asynchronous JavaScript and XML</li>
+<li>A protocol for what information should be sent</li>
+<li>For JS to communicate directly with a server, we require a format, which is usually XML and JSON</li>
+<li>XML:<ul>
+<li>All data is held within tags, much like HTML</li>
+</ul>
+</li>
+<li>JSON: <ul>
+<li>stores data in the syntax of JS</li>
+</ul>
+</li>
+</ul>
+<h1 id="flask-and-server-side-rendering">Flask and Server-Side Rendering</h1>
+<h2 id="-8">===================================</h2>
+<blockquote>
+<p>A web server is simply a program running on a computer connected to the internet that responds to requests from other computers on the network. This is also referred to as back-end development (so now full-stack development).</p>
+</blockquote>
+<h4 id="different-stacks">Different Stacks</h4>
+<ul>
+<li>LAMP, Ruby on Rails or Django (Python)</li>
+<li>We will use:<ul>
+<li>Flask: a micro framework, that allows us to write our backend in Python</li>
+<li>SQLite: a lightweight database management system</li>
+<li>AJAX: provides the method for transmitting data between the browser and server</li>
+<li>jQuery: to have bindings for AJAX on the client side.</li>
+</ul>
+</li>
+</ul>
+<h2 id="flask">Flask</h2>
+<ul>
+<li>Micro framework that can be used to create a server program that will run on any machine and has few dependencies.</li>
+<li>Basic &quot;Hello World&quot; Flask application in an <code>app.py</code> file</li>
+</ul>
+<pre><code class="language-python">from flask import flask
+app = Flask(__name__)
+@app.route(&quot;/&quot;)     #annotate with this, in this case top level
+def hello():
+    return &quot;Hello World&quot;
+if __name__ == &quot;__main__&quot;:
+    app.run()
+</code></pre>
+<ul>
+<li>Single file structure does NOT scale well</li>
+<li>Create a Python package that will contain all the code we need for the web app</li>
+<li>The <code>__init__.py</code> file creates an instance of the Flask class and <code>routes.py</code> contains request handlers</li>
+<li>Then we need a file at top level to support the app.</li>
+</ul>
+<pre><code class="language-python">#app/__init__.py
+from flask import flask
+app = Flask(__name__)
+from app import routes
+
+#app/routes.py
+from app import app
+@app.route(&quot;/&quot;)              #this is an endpoint
+@app.route(&quot;/index&quot;)         #can be multiple endoints
+def index():
+    return &quot;Hello World&quot;
+
+#microblog.py
+from app import app
+</code></pre>
+<ul>
+<li>Endpoints can also use variables: <code>@app.route(&quot;/user/&lt;username&gt;&quot;)</code> where <code>&lt;username&gt;</code> is a variable</li>
+</ul>
+<h4 id="endpoints">Endpoints</h4>
+<ul>
+<li>By default, endpoints are only available as <code>GET</code> requests, you can add others though:</li>
+</ul>
+<pre><code class="language-python">@app.route(&quot;/login&quot;, methods=[&#39;GET&#39;, &#39;POST&#39;])
+def login():
+    if request.method == &#39;POST&#39;:
+        do_the_login()
+    else:
+        show_the_login_form()
+</code></pre>
+<ul>
+<li>You can use <code>url_for</code> function to retrieve the URL for a given endpoint</li>
+</ul>
+<h4 id="server-side-vs-client-side-rendering">Server-side vs Client-side Rendering</h4>
+<ul>
+<li>Two main approaches:<ul>
+<li>Server-side rendering:<ul>
+<li>the server builds the HTML when it receives the request and sends it to the client</li>
+</ul>
+</li>
+<li>Client-side rendering:<ul>
+<li>the server sends JS and an HTML skeleton to the client and the client can then request JSON and build the HTML using AJAX and jQuery</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="flask-server-side">Flask Server-side</h4>
+<ul>
+<li>Most basic approach:</li>
+</ul>
+<pre><code class="language-python">from app import app
+@app.route(&quot;/&quot;)              #this is an endpoint
+@app.route(&quot;/index&quot;)         #can be multiple endoints
+def index():
+    user = (&quot;username&quot; : &quot;Miguel&quot;)
+    return &#39;&#39;&#39;
+&lt;html&gt;
+    ...
+&lt;/html&gt;&#39;&#39;&#39;
+</code></pre>
+<ul>
+<li>Alternatively, we can use templates, Flask uses <strong>Jinja</strong> for this</li>
+<li>We would generally have a <code>template</code> directory, with variables distinguished by <code>{{...}}</code></li>
+</ul>
+<pre><code class="language-html">&lt;!--app/templates/index.html--&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{title}} - Microblogs&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt; Hello, {{user.username}}&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="language-python">#app/routes.py
+from flask import render_template
+from app import app
+
+@app.route(&quot;/&quot;)
+@app.route(&quot;/index&quot;)
+def index():
+    user = {&#39;username&#39;: &#39;Miguel&#39;}
+    return render_template(&quot;index.html&quot;, title = &quot;Home&quot;, user = user)
+</code></pre>
+<h4 id="running-in-vscode">Running in VSCode</h4>
+<p><code>&gt; set FLASK_APP=main.py</code>
+<code>&gt; $env:FLASK_APP = &quot;main.py&quot;</code>
+<code>&gt; flask run</code>
+``</p>
+<h1 id="flask-and-client-side-rendering">Flask and Client-Side Rendering</h1>
+<h2 id="-9">===================================</h2>
+<h4 id="single-page-applications-spa">Single Page Applications (SPA)</h4>
+<ul>
+<li>Services where the entire website is provided via client-side rendering:<ul>
+<li>Browser/client does heavy lifting</li>
+<li>Server only provides data</li>
+<li>The user never navigates to a new URL</li>
+</ul>
+</li>
+<li>Pros of SPA:<ul>
+<li>Less load on server</li>
+<li>A more responsive client</li>
+<li>Genuine separation between content and presentation</li>
+</ul>
+</li>
+<li>Cons of SPA:<ul>
+<li>Longer load time</li>
+<li>Search engine optimisation (SEO) can be an issue</li>
+<li>Navigation (forward and back buttons) can be an issue</li>
+</ul>
+</li>
+</ul>
+<h4 id="client-side-rendering-w-web-sockets">Client Side Rendering w/ Web Sockets</h4>
+<ul>
+<li>HTTP requests are useful for providing dynamic content but are heavy weight and expensive to setup</li>
+<li>Many web applications depend on real time interaction</li>
+<li>Web sockets provide full duplex communication</li>
+<li>Supported in flask via the <code>flask-socketIO</code> package</li>
+<li><code>socketIO</code> is good for message passing chat or distributed games</li>
+<li><code>WebRTC</code> can be used for direct video and audio</li>
+<li>Clients connect to a socket on a server and then the server can push messages to clients</li>
+<li>Sockets mirror routes of a flask project, however they listen for messages and actions and broadcast those</li>
+<li>The server works as a common blackboard for the session and clients listen via jQuery</li>
+</ul>
+<h1 id="databases">Databases</h1>
+<h2 id="-10">===================================</h2>
+<h4 id="architecture">Architecture</h4>
+<ul>
+<li>Design patterns describe re-usable design concepts, including:<ul>
+<li>Client-server</li>
+<li>Pipe and filter</li>
+<li>Blackboard</li>
+</ul>
+</li>
+</ul>
+<h4 id="model-view-controller-pattern-mvc">Model-view-controller Pattern (MVC)</h4>
+<ul>
+<li>Model is the data</li>
+<li>Controller receives, updates, queries</li>
+<li>View is presentation and assets</li>
+<li>Advantages:<ul>
+<li>Can alter view without altering the model</li>
+<li>Can swap database without altering view</li>
+<li>Specialist developers can work on each bit</li>
+<li>Can support multiple views</li>
+<li>Easier to test parts in isolation</li>
+</ul>
+</li>
+<li>The model is the python objects</li>
+<li>The view is the HTML</li>
+<li>The controller is the code in <code>routes.py</code></li>
+</ul>
+<h4 id="mock-ups-of-views">Mock-ups of views</h4>
+<ul>
+<li>Wireframes show the basic layout and functionality of a user interface</li>
+<li>Various tools, or by hand</li>
+</ul>
+<h4 id="implementing-models">Implementing Models</h4>
+<ul>
+<li>A model is an object that is paired with an entity in a database</li>
+<li>There is an <strong>Object Relational Mapping</strong> (ORM) linking the data to the models in the application</li>
+</ul>
+<h4 id="relational-databases">Relational Databases</h4>
+<ul>
+<li>Store data as a set of relations</li>
+<li>Each row is an entity, each column an attribute</li>
+<li>Each has a Primary Key</li>
+<li>Linkages are Foreign Keys</li>
+</ul>
+<h4 id="database-management-system-sqlite">Database Management System (SQLite)</h4>
+<ul>
+<li>A database management system (DBMS) is an application that controls access to a database</li>
+<li>SQLite as its small and simple</li>
+<li>SQLite commands start with a <code>.</code></li>
+</ul>
+<pre><code class="language-sql">sqlite3 app.db #creates database
+
+CREATE TABLE contact_groups (
+    contact_id integer,
+    group_id integer,
+    PRIMARY KEY (contact_id, group_id),
+    FOREIGN KEY (contact_id) REFERENCES contacts(contact_id)
+    ON DELETE CASCADE ON UPDATE NO ACTION
+);
+
+.database #shwos file path
+.table #lists tables
+.schema tableName #shows the schema for a table
+.indexes
+.exit
+</code></pre>
+<ul>
+<li>In SQL-Alchemy:</li>
+</ul>
+<pre><code class="language-python">class Student(db.model):
+    uwa_id = db.Column(db.String(8), primary_key = True)
+    name = db.Column(db.String(120), nullable = False)
+    group_id = db.Column(db.Integer, db.ForeignKey(&quot;group.group_id&quot;),                        nullable = True)
+    group = db.relationship(&quot;Group&quot;, back_populates = &quot;students&quot;)
+</code></pre>
+<ul>
+<li>Must use <code>db.session.commit</code> in order to commit changes<ul>
+<li>Useful so that error messages can be returned, while not having to unwind the database to get rid of errors</li>
+</ul>
+</li>
+<li><code>users = User.query.&lt;SQL syntax&gt;.all()</code></li>
+</ul>
+<h4 id="database-migration-in-flask">Database Migration in Flask</h4>
+<ul>
+<li>How can you dynamically add things in a table?</li>
+<li>Like version control for your database</li>
+<li>Each is accompanied with <em>upgrade</em> and <em>downgrade</em> scripts</li>
+</ul>
+<h1 id="security">Security</h1>
+<h2 id="-11">===================================</h2>
+<h4 id="breakdown">Breakdown</h4>
+<ul>
+<li>Security on the web depends on trust. There are several elements to this:<ol>
+<li>The web server needs to be confident that someone accessing data is authorised<ul>
+<li>Achieved via session/token-based authentication</li>
+</ul>
+</li>
+<li>The user needs to know that the site they are visiting is the one they intend to<ul>
+<li>Achieved via SSL Certificates</li>
+</ul>
+</li>
+<li>Both the server and the client need to be confident that no one in the middle is accessing unauthorised data<ul>
+<li>Achieved via HTTPS (HTTP Secure)</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Underlying all of these are public-key encryption and cryptographic hashing</li>
+</ul>
+</li>
+</ul>
+<h4 id="public-key-encryption">Public Key Encryption</h4>
+<ul>
+<li>Secure communication is based on Public Key Encryption. There is an encryption and decryption function</li>
+<li>A public-private key is a pair of keys <code>pub</code> and <code>priv</code> such that
+  $x = D_{priv}E_{pub}(x)$      $x = D_{pub}E_{priv}(x)$
+  you cannot work out <code>priv</code> even if you know <code>pub</code></li>
+<li>&quot;Salting&quot; is added to each user, differently, so that the hash cannot be computed via a rainbow table</li>
+</ul>
+<h4 id="hashing">Hashing</h4>
+<ul>
+<li>Secure data storage is based on Cryptographic Hashing<ul>
+<li>A cryptographic hash function is a function hash that takes a string or arbitrary length and returns a fixed length integer such that:</li>
+<li>Essentially it computes a number from a stream of data, in such a way that it&#39;s very difficult to fabricate data with a certain hash</li>
+<li>Related to hashing for hash tables, but the hash function must satisfy the much stronger properties above to be cryptographically secure</li>
+</ul>
+</li>
+</ul>
+<h4 id="session-based-user-authentication">Session-based User Authentication</h4>
+<ul>
+<li>HTTP is stateless, application is not!</li>
+<li>To track a user&#39;s session, we need to have them register so we can associate a username and password with them. The password is hashed, and the result is stored in the database</li>
+<li>When someone logs in, they provide the same password</li>
+<li>If successful, the server&#39;s response contains a cookie with the session ID and hash</li>
+<li>Whenever a future HTTP request is made, the server checks the session ID in the cookie and recomputes hash to check the ID hasn&#39;t been altered</li>
+</ul>
+<h2 id="attacks-on-session-based-protocols">Attacks on Session Based Protocols</h2>
+<h4 id="impersonation-attack">Impersonation Attack</h4>
+<ul>
+<li>Sessions allow the server to authenticate the user. However, remember the network is still fundamentally insecure</li>
+<li>Without extra security, the easiest attack is an impersonation attack<ul>
+<li>The network redirected the user&#39;s request to a fake user</li>
+<li>The fake server acts just like the real server</li>
+<li>User submits passwords, private data etc. to the fake server</li>
+</ul>
+</li>
+</ul>
+<h4 id="ssl-certificates">SSL Certificates</h4>
+<ul>
+<li>An impersonation attack can be prevented by the server a certificate that it&#39;s real via the Secure Socket Layer protocol</li>
+<li>Certificates are provided by a trusted third party known as a Certificate Authority (CA)</li>
+</ul>
+<h4 id="man-in-the-middle-attack">Man-in-the-middle Attack</h4>
+<ul>
+<li>Even when using certificates, the network can still perform man-in-the-middle attacks<ul>
+<li>All traffic is first redirected to the attacker and then forwarded to the real server</li>
+<li>Because the user is interacting with the real server, the certificate check passes</li>
+<li>However, the attacker still gets access to all the information sent back and forth, including the signed cookies</li>
+</ul>
+</li>
+</ul>
+<h4 id="encrypted-sessions-with-ssl">Encrypted Sessions With SSL</h4>
+<ul>
+<li>We cannot prevent the network from redirecting the messages via a third party, so we must encrypt our messages</li>
+<li>SSL also includes a public key encryption process to enable secure HTTP requests</li>
+<li>After the initial certificate handshake establishing that the server has the public key, both parties use a key distribution protocol to generate a shared set of private session keys</li>
+<li>They then use these keys to encrypt all future traffic during that session</li>
+</ul>
+<h4 id="https">HTTPS</h4>
+<ul>
+<li>In theory SSL can be used to encrypt any data between two end points</li>
+<li>In practice, the most common type of traffic is simply HTTP requests. Using HTTP over SSL is known as HTTPS</li>
+</ul>
+<h4 id="cross-site-request-forgery-crsf-attack">Cross-Site Request Forgery (CRSF) Attack</h4>
+<ul>
+<li>A signed cookie from their server in your browser:<ul>
+<li>Cookies are transferred automatically when making the request to the domain they are associated with, and therefore the signed cookie is sent to the server</li>
+<li>The server checks the cookie, which passes as it is real, and therefore thinks the request is from the user and the transfer goes through</li>
+</ul>
+</li>
+</ul>
+<h2 id="token-based-user-authentication">Token-Based User Authentication</h2>
+<h4 id="downsides-of-session-based-authentication">Downsides of Session-Based Authentication</h4>
+<ul>
+<li>Session-based authentication works for web-based applications but has several drawbacks<ul>
+<li>It requires the application to track all user sessions which may not scale well</li>
+<li>HTTP requests are sent in plain text, and passwords should never be transmitted or stored in plain text</li>
+<li>The user may be accessing the application via a mobile application where there is no such thing as a cookie</li>
+<li>It is inherently stateful, which may not be necessary</li>
+<li>It requires users to have registered their information with the server</li>
+</ul>
+</li>
+</ul>
+<h4 id="tokens-and-jwt">Tokens and JWT</h4>
+<ul>
+<li>From a cryptographic perspective, tokens are the same as session cookies, but unlike session cookies, tokens are not usually used to authenticate a user and retrieve the state on the server</li>
+<li>Instead, they authorise the holder to perform a particular action</li>
+<li>Crucially, it is not necessary for the server to know who the requester is</li>
+</ul>
+<h4 id="advantages-of-tokens">Advantages of Tokens</h4>
+<ul>
+<li>By sacrificing the ability to store state, tokens have many advantages over sessions:<ul>
+<li>Validating a token doesn&#39;t require querying the database</li>
+<li>Tokens aren&#39;t vulnerable to CRSF attacks</li>
+<li>They don&#39;t require cookies and therefore work on mobile apps</li>
+<li>Tokens can store a set of privileges, rather than just one</li>
+</ul>
+</li>
+</ul>
+<h1 id="testing">Testing</h1>
+<h2 id="-12">===================================</h2>
+<p>Many various ways; in order of effectiveness:</p>
+<ul>
+<li>Code reviews: peer reviews</li>
+<li>Testing: providing test cases</li>
+<li>Formal verification: building precise specifications of correctness and proving code meets these specifications</li>
+</ul>
+<h4 id="types-of-tests">Types of Tests</h4>
+<ul>
+<li>Unit tests: test an individual function to ensure it behaves correctly</li>
+<li>Integration tests: execute each scenario to make sure modules integrate correctly</li>
+<li>Systems tests: integrate real hardware platforms and test their behaviours</li>
+<li>Acceptance tests: run through complete user scenarios via UI</li>
+</ul>
+<h4 id="unit-tests">Unit Tests</h4>
+<p>The purpose of a unit test is to test an individual function, using 2 to 5 per function.
+Properties include:</p>
+<ul>
+<li>Automated</li>
+<li>Repeatable</li>
+<li>Run quickly</li>
+<li>Pinpoint the failure</li>
+<li>Limited in scope
+Often &quot;test doubles&quot; are used, such as:</li>
+<li>Fakes: objects with working implementations, but not the same as the production environment, for example, the full database has been replaced by a fake</li>
+<li>Stubs: objects that hold predefined data to respond to specific requests</li>
+<li>Mocks: like stubs but remember the calls they receive</li>
+</ul>
+<h4 id="the-python-unittest-module">The Python <code>unittest</code> Module</h4>
+<p>Provides several classes and functions:</p>
+<ul>
+<li><strong>Test Fixtures</strong> prepare for a test case, called <code>setUp</code> and <code>tearDown</code> which run before and after</li>
+<li><strong>Test Case</strong> is the standard class for running a test, specifying fixtures and functions to execute</li>
+<li><strong>Test Suite</strong> allows tests to be run together and run at the same time</li>
+<li><strong>Test Runner</strong> responsible for running the test</li>
+</ul>
+<h4 id="creating-a-mock-db-in-flask">Creating a Mock DB in Flask</h4>
+<p><code>SQLALCHEMY_DATABASE_URI = &quot;sqlite:///:memory&quot;</code> creates a non-persistent database in memory rather than as a file on disk.
+<code>Config</code> class holds the options shared between all configurations, subclasses hold options specific to a particular configuration:</p>
+<pre><code class="language-python">class Config:
+    SQL_ALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = os.environ.get(&quot;FLASK_SECRET_KEY&quot;)
+class DeploymentConfig(Config):
+    SQLALCHEMY_DATABASE_URI = &quot;sqlite:///&quot; + os.path.join(basedir, &#39;test.db&#39;)
+class TestConfig(Config):
+    SQLALCHEMY_DATABASE_URI = &quot;sqlite:///:memory&quot;
+    TESTING = True
+</code></pre>
+<h4 id="writing-unit-tests">Writing Unit Tests</h4>
+<p>The name MUST begin with <code>test</code> and use <code>assert</code> methods to define whether it passes.</p>
+<pre><code class="language-python">def test_password_hashing(self):
+    s = Student.query.get(&quot;01234587&quot;)
+    s.set_password(&quot;bubbles&quot;)
+    self.assertTrue(s.check_password(&quot;bubbles&quot;))
+    self.assertFalse(s.check_password(&quot;rumbles&quot;))
+</code></pre>
+<ul>
+<li>This is then run using <code>python -m unittest &lt;filename&gt;</code></li>
+</ul>
+<h4 id="system-tests">System Tests</h4>
+<p>Integrate real hardware platforms and test their behaviour. In the web, this means testing the behaviour of how the application works in a browser. 
+<strong>Selenium</strong> is one possible program that can be used to automate browsers to run test cases; two variations:</p>
+<ul>
+<li>Selenium IDE: a browser plugin that can record interactions and run them back to confirm the outcome stays the same</li>
+<li>Selenium WebDriver: a set of tools for scripting system tests</li>
+</ul>
+<h1 id="restful-apis">RESTful APIs</h1>
+<h2 id="-13">===================================</h2>
+<blockquote>
+<p>An <em>Application Programming Interface</em> (API) is a means to provide the logic and data structures of your app as a service to other developers so they can embed the functionality into different applications and customise the UI</p>
+</blockquote>
+<p>The most common API design is based on REST APIs, client-side page rendering uses what are essentially REST APIs designed for private rather than public use</p>
+<h3 id="principles-of-rest">Principles of REST</h3>
+<ul>
+<li><strong>REpresentational State Transfer</strong> (REST) is an architecture for the web that describe interactions with web-based resources</li>
+</ul>
+<h4 id="the-6-characteristics-of-rest">The 6 Characteristics of REST</h4>
+<ol>
+<li>Client-server model: sets out different roles of the client and server in the system, should be clearly differentiated as separate processes, the interface is through HTTP and the transport through TCP/IP</li>
+<li>Layered System: there does not need to be a direct link between the client and the server, the client does not need to distinguish between the actual server and an intermediary, and the server does not need to know whether it is communicating directly with the client</li>
+<li>Cache: states that it is acceptable for the client or intermediaries to cache responses to requests and serve these without going back to the server every time. This allows for efficient operations of the web. Anything encrypted cannot be cached by an intermediary, saves reloading the same static files.</li>
+<li>Code on Demand (Optional): can provide executable code in responses to a client</li>
+<li>Stateless: servers should not maintain any memory of prior transactions and every request from clients should include sufficient context for the server to satisfy the request</li>
+<li>Uniform Interface: clients in principle do not need to be specifically designed to consume a server</li>
+</ol>
+<h3 id="designing-a-rest-api">Designing a REST API</h3>
+<ul>
+<li>Standard CRUD operations are CREATE, READ, UPDATE and DELETE, typical ways to interact with our data model</li>
+<li>In web apps, they are mapped to HTTP methods: POST, GET, PUT/PATCH and DELETE</li>
+</ul>
+<h3 id="rest-in-flask">REST in Flask</h3>
+<ul>
+<li>Can augment a Flask web app so that it provides a REST API but shares the database with the web app</li>
+<li>The REST API provides a web interface to the backend data model</li>
+<li>Flask application looks like:</li>
+</ul>
+<pre><code>myapp\
+    app\
+        __init__.py
+        FORMS.py
+        models.py
+        controllers.py
+        routes.py
+        templates\
+            base.html
+            ...
+        static\
+            bootstrap.css
+            ...
+        api\
+            __init__.py              //initialise the api
+            auth.py                  //handle token based auth
+            models_api.py            //handle api routes for each model
+            token_api.py             //handles tokens
+</code></pre>
+<ul>
+<li><strong>TOKENS</strong>: access to many APIs are controlled by tokens, the token API allows a logged-in user to generate a token that allows access to the API</li>
+</ul>
+<h1 id="deployment">Deployment</h1>
+<h2 id="-14">===================================</h2>
+<h3 id="upgrading-to-production-grade-tools">Upgrading to Production-Grade Tools</h3>
+<ul>
+<li>We used Flask and SQLite to allow fast development</li>
+<li>For security and scalability reasons, these aren&#39;t particularly suitable</li>
+<li>SQLite =&gt; MySQL</li>
+<li>Flask =&gt; Gunicorn and nginx</li>
+</ul>
+<h3 id="why-replace-sqlite">Why Replace SQLite?</h3>
+<ul>
+<li>MySQL is a server database rather than an embedded database, meaning it can run on entirely separate machines and act like a server for multiple web servers</li>
+<li>Means better in production and scales well</li>
+<li>Also has inbuilt authentication methods that keeps your data secure even if your VM is compromised</li>
+<li>Easy to replace</li>
+</ul>
+<h3 id="why-replace-flask-server">Why Replace Flask Server?</h3>
+<ul>
+<li>In a production system, common to decompose the web-server into two separate servers:<ul>
+<li>A public facing <em>reverse-proxy server</em> that serves cached static content, handles load balancing and handles SSL encryption</li>
+<li>One or more private <em>origin servers</em> that contain the actual logic of the web application</li>
+</ul>
+</li>
+<li>We will use <strong>Gunicorn</strong> as the origin server (installable as Pip)</li>
+<li><strong>Nginx</strong> as the reverse-proxy server:<ul>
+<li>For dealing with external traffic and serving static content</li>
+<li>Does several things:<ul>
+<li>Routes all traffic through HTTPS so it is encrypted</li>
+<li>Caches any static data served to improve efficiency</li>
+<li>Handles public-key encryption/decryption</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="deploying-the-website">Deploying the Website</h3>
+<h4 id="via-linux-vm">Via Linux VM</h4>
+<ul>
+<li>The server runs applications listening to ports for requests and serves those requests</li>
+<li>As most people don&#39;t want to worry about the physical infrastructure they use hosting solutions</li>
+<li>These include Amazon, Azure and etc. where you register an account and request an instance, you have a user account with login details, that allows you to SSH into the VM and configure and deploy your app from the command line</li>
+<li>Steps should be taken to secure the server:<ul>
+<li>Remove passwords for login and use key files instead</li>
+<li>Disable root logins</li>
+<li>Use a firewall to only accept traffic on ports 22 (SSH), 80 (HTTP) and 443 (HTTPS)</li>
+<li>Route all web requests through HTTPS, HTTP traffic is transmitted in plaintext and is visible to intermediate nodes</li>
+</ul>
+</li>
+</ul>
+<h4 id="via-your-own-physical-server">Via Your Own Physical Server</h4>
+<ul>
+<li>Can use something such as a Raspberry Pi, and connect it to a wireless router and then access the administrator interface of the router</li>
+</ul>
+<h4 id="via-cloud-containers">Via Cloud Containers</h4>
+<ul>
+<li>There exists a lot of Platform-as-a-Service (PaaS) products, largely doing away with having to set up a server, manage storage and maintain infrastructure</li>
+<li><strong>Containers</strong> are often used to put your web app in its own little transportable box that stays the same no matter what, they standardise the software you&#39;ve written, along with all the dependencies so it runs the same from one environment to another</li>
+<li>Services such as <strong>docker</strong> and <strong>Heroku</strong> don&#39;t offer full Linux VMs but a container to run a single process as a service, they install code directly from Git repository, install all the dependencies and execute and initialise the app</li>
+</ul>
+</div>
+    </div>
+</body>
+</html>

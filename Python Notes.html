@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CITS2401 Notes</title>
+    <meta name="description" content="Uni Notes" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheet.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="./index.html">MonkeInABox</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="./designs.html">./Train Maps</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./banddesigns.html">./Band Designs</a>
+      </li>
+      <li class="nav-item" style="background-color: rgb(13, 14, 15); border-radius: 8px 8px 0px 0px;">
+        <a class="nav-link" href="./notes.html">./Notes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./setlists.html">./Setlists</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://beepbeepbeepboom.nekoweb.org/">./Goblin's Den</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <div>
+        <h1 class="text-center">CITS2401 Notes</h1>
+        <br><br><br>
+        <div style="text-decoration: none;"><p><a class="link" href="./notes.html">cd -</a></p>
+<blockquote>
+<p>Written by Jeremy Butson 2024 based on UWA CITS2401 Lecture Notes</p>
+</blockquote>
+<h1 id="basics-and-style">Basics and Style</h1>
+<p>The shell covers a kernel and allows interacting with a user&#39;s input</p>
+<p><strong>REPL</strong> = Read Evaluate Print Loop</p>
+<p>Operator precedence does occur, follows BIDMAS rules</p>
+<pre><code class="language-python">&#39;&#39;&#39;
+this is code with various reminders and functions.
+Written by Jeremy Butson 25/02/24
+&#39;&#39;&#39;
+
+import yadayada
+
+phone_number = &quot;0478634195&quot;
+print(phone_number[::-1])                          #reverses phone number
+
+sum([1, 2, 3])                                     #returns 6
+
+locals()                                           #returns current vars
+
+int(3.4) == 3
+float(2) == 2.0
+complex(4.5) == 4.5 + 0j
+
+round(6.433421) == 6
+abs(-3) == 3
+int(&quot;67&quot;) == 67
+</code></pre>
+<h2 id="data-types">DATA TYPES:</h2>
+<ul>
+<li>Integers (123)</li>
+<li>Float (0.00)</li>
+<li>Complex (5+2j)</li>
+<li>String (&quot;hello&quot;)</li>
+<li>Boolean (True/False)</li>
+</ul>
+<pre><code class="language-python">type(123)                           #returns int
+</code></pre>
+<h2 id="operators">OPERATORS:</h2>
+<ul>
+<li><blockquote>
+<p>&lt; == &lt;= &gt;= != + - / // % * ** += -=</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="defining-functions">DEFINING FUNCTIONS:</h2>
+<pre><code class="language-python">def square(x):
+    &quot;&quot;&quot;squares a number&quot;&quot;&quot;    #called a docstring, explains what function does
+    return x*x
+</code></pre>
+<h2 id="style">STYLE</h2>
+<ul>
+<li>programming should be <em>correct, readable and maintainable</em></li>
+<li>will be using PEP8<ul>
+<li>peps.python.org/pep-0008/</li>
+<li><h3 id="a-foolish-consistency-is-the-hobgoblin-of-little-minds"><a href="https://peps.python.org/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds">A Foolish Consistency is the Hobgoblin of Little Minds</a></h3>
+</li>
+</ul>
+</li>
+<li>for wide-scope variables: use only lower case, separating words with __ <ul>
+<li>use clear variable names (not just x or y etc.)</li>
+</ul>
+</li>
+<li>break into lots of single usage functions</li>
+<li>don&#39;t use global variables</li>
+<li>at most 40 lines per function</li>
+<li>at most 4 levels of indentation</li>
+<li>use library functions when possible</li>
+<li>use a main() statement to  start code</li>
+<li>use ALL_CAPS to define a global constant at the top of program</li>
+<li>separate functions 2-3 blank lines</li>
+<li>use white-space around o p e r a n d s</li>
+<li>every program must have a <em>docstring</em> at the top stating<ul>
+<li>author</li>
+<li>role</li>
+<li>date</li>
+</ul>
+</li>
+<li>every function must have a <em>function docstring</em> saying what it does<ul>
+<li>this should be <em>after</em> the function definition</li>
+</ul>
+</li>
+<li>otherwise use #comments sparingly</li>
+</ul>
+<h2 id="taking-inputs">Taking Inputs:</h2>
+<pre><code class="language-python">name = input(&quot;Please enter your name: &quot;)
+print(&quot;HELLO &quot; + name + &quot;!&quot;)
+</code></pre>
+<h1 id="strings--lists">Strings &amp; Lists</h1>
+<p>A <strong>string</strong> is a sequence of characters.
+A <strong>literal</strong> is a constant.</p>
+<h2 id="strings">STRINGS:</h2>
+<ul>
+<li>Can be shown using:<ul>
+<li>&quot;...&quot;</li>
+<li>&#39;...&#39;</li>
+<li>&#39;&#39;&#39;...&#39;&#39;&#39; or &quot;&quot;&quot;...&quot;&quot;&quot;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">print(&quot;Hello&quot;, end = &#39;\n&#39;)             #default (new line character)
+print(&quot;Hello&quot;, end = &#39;&#39;)              #make it so it doesn&#39;t go to new line
+</code></pre>
+<ul>
+<li>Best delimiter to use:<ul>
+<li>Recommended to use &quot;...&quot; unless the string contains those characters</li>
+<li>Hence where &#39;&#39;&#39;...&#39;&#39;&#39; comes into use</li>
+<li>OR &quot;\&quot;Hello\&quot;&quot;</li>
+</ul>
+</li>
+<li>Triple quotes does NOT end a string with new line, or when a backslash precedes the new line (escape)</li>
+<li><strong>STRING OPERANDS:</strong><ul>
+<li>&#39;+&#39; adds two strings together (concatenation)                                 str() + str()</li>
+<li>&#39;*&#39; multiplies a string by a given number (repetition)</li>
+<li>&#39;%&#39; performs string formatting</li>
+</ul>
+</li>
+</ul>
+<h2 id="calling-methods">CALLING METHODS:</h2>
+<pre><code class="language-python">objectName.methodName()
+
+#i.e. 
+name.find(&#39;x&#39;)
+
+#Common String Methods:
+capitalize()                                  #capitalises first letter
+find(substring [, begin [, end]])
+lower()
+upper()
+strip([charsToStrip])
+startswith(prefix [, start [, end]])           #similarly for ends with
+split([delimiter])
+format(value [, value])
+
+#f-String Basics:
+name = &quot;James&quot;
+height = &quot;189.3&quot;
+print(f&quot;Name: {name}, height: {height})
+#f-String also takes away new line character
+str = &quot;a&quot;
+print(f&quot;{str:&gt;10}&quot;)                            #justifies 10 spaces to right
+string.strip()                         #default gets rid of blank spaces
+</code></pre>
+<h2 id="lists">LISTS:</h2>
+<ul>
+<li>A list is a sequence of objects</li>
+<li>list[0] gets the first item</li>
+<li>Index starts at 0</li>
+<li><code>len()</code> produces number of items in list</li>
+<li>list[-1] accesses last item</li>
+<li>List object is just a list of references</li>
+<li>List objects are mutable</li>
+<li>We can get slices, or SUBLISTS:<ul>
+<li><code>print(listName[start:end+1])</code></li>
+</ul>
+</li>
+<li><strong>OPERATORS &amp; METHODS:</strong><ul>
+<li><code>list + list2</code> concatenates list</li>
+<li><code>3 in [1,2,5]</code> is false</li>
+<li><code>3 * list</code> repeats list 3 times</li>
+<li><code>len(list)</code> number of items</li>
+<li><code>sum(list)</code> adds them up</li>
+<li><code>min(list)</code> and <code>max(list)</code></li>
+<li>Also:
+<code>list.append(object) , list.count(value) , list.extend(list2) , list.index(value) , list.insert(index, object) , list.pop([index]) , list.remove(value) , list.reverse() , list.sort() , list(&quot;String&quot;) = [&#39;S&#39;, &#39;T&#39;, ...] list(range(1,3)) = [1, 2, 3]</code></li>
+<li>Use slicing to make a copy of a list:
+  <code>list2 = list[:]</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="tuples">TUPLES:</h2>
+<ul>
+<li><strong>Tuples</strong> are like lists but with parenthesis instead of brackets</li>
+<li>Tuples are immutable</li>
+</ul>
+<h1 id="loops--nesting">Loops &amp; Nesting</h1>
+<p><strong>Definite Loop</strong>: for loop</p>
+<pre><code class="language-python">for i in [0,1,2,3,4]:
+    i_sqr = i * i
+    print(f&quot;{i} squared = {i_sqr:2}&quot;)
+
+(i * i) for i in [0,1,2,3,4]                        #returns the same
+</code></pre>
+<ul>
+<li>Programming patterns for solving common problems:<ul>
+<li>accumulator</li>
+<li>mapped-list (get a function of every value)</li>
+<li>counting-loop<ul>
+<li><code>for i in range(0, 7, 2):</code></li>
+</ul>
+</li>
+<li>updated-list</li>
+</ul>
+</li>
+</ul>
+<p><strong>Indefinite Loop</strong>: while loop</p>
+<h2 id="nesting">NESTING:</h2>
+<ul>
+<li>Something within something</li>
+</ul>
+<pre><code class="language-python">rainfalls = [
+    [0,1,2,3],
+    [4,5,6,7],
+    [8,9,1,2]
+]
+</code></pre>
+<ul>
+<li>Need a nested loop in order to print this whole table: go through each row and print each column in each row</li>
+</ul>
+<h1 id="conditions">Conditions</h1>
+<h2 id="booleans">Booleans:</h2>
+<ul>
+<li>Either <code>True</code> or <code>False</code></li>
+<li>Using signs <code>&lt; &gt; &lt;= &gt;= == !=</code><ul>
+<li>Notice <code>=</code> is an assignment function, <code>==</code> is a comparative</li>
+</ul>
+</li>
+<li>Also returns from <code>startsWith</code> etc.</li>
+<li>use <code>is_condition</code> when naming Booleans</li>
+</ul>
+<h2 id="if-statements"><code>If</code> Statements:</h2>
+<pre><code class="language-python">if boolExpression:
+    block
+elif boolExpression2:
+    block
+else:
+    block
+</code></pre>
+<ul>
+<li>NEVER compare floats for equality (cannot be guaranteed)</li>
+</ul>
+<h2 id="logics">Logics:</h2>
+<ul>
+<li>Lazy evaluation:<ul>
+<li>a or b returns True if a is True; only evaluates b if a is False</li>
+<li>a and b returns False if a is False; evaluates b only if a is True</li>
+<li>Important if b has side effects or could generate an error</li>
+</ul>
+</li>
+<li>Avoid complex logic by:<ul>
+<li>Simplifying logical expressions (de Morgan&#39;s, etc.)<ul>
+<li><code>not (a or b)</code> is equal to <code>not a and not b</code></li>
+</ul>
+</li>
+<li>Flattening nested code</li>
+<li>Introducing temporary Boolean variables</li>
+<li>Writing Boolean-valued functions</li>
+</ul>
+</li>
+</ul>
+<h2 id="while-loops"><code>while</code> Loops:</h2>
+<pre><code class="language-python">while condition:
+    statementBlock
+</code></pre>
+<ul>
+<li>Sometimes we do not have a known sequence so must use while loops instead of for loops</li>
+<li>Need to make sure that the loop condition will eventually come true, otherwise the program loops forever (infinite loop)</li>
+<li>There are also input condition while loops:<ul>
+<li>For example: looping until a use presses quit</li>
+</ul>
+</li>
+<li><code>break</code> forces an immediate exit from the loop, goes straight to first statement after the loop</li>
+<li><code>continue</code> will only skip the current iteration</li>
+</ul>
+<h1 id="functions">Functions</h1>
+<h2 id="modules">Modules</h2>
+<ul>
+<li>Control complexity, large programs broken down into functions</li>
+<li>As they get larger, broken into modules, these are usually in separate files</li>
+<li>The Python library is a large collection of modules</li>
+<li><code>import some_module</code><ul>
+<li>This loads <strong>and executes</strong> the file some_module.py</li>
+</ul>
+</li>
+<li>Some common modules:<ul>
+<li><code>math</code><ul>
+<li><code>math.pi</code> <code>math.sqrt()</code> etc.</li>
+<li>You can select specific functions:<ul>
+<li><code>from math import pi, sqrt</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>When you run a program, its <code>__name__ == __main__</code></li>
+<li>When you ask a module for its <code>__name__</code> it is the module files name<ul>
+<li>This can be used in testing modules:<ul>
+<li><code>if __name__ == &#39;__main__&#39;:</code> as it will only run if you are running the program directly not if its being used as a module</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li><strong>Default parameters</strong> allow functions to be called with different numbers of arguments<ul>
+<li>This reduces code repetition and helps to do one job well</li>
+<li><code>def find_first(item, data, start_index = 0):</code> <ul>
+<li><code>start_index</code> is a default parameter</li>
+</ul>
+</li>
+<li>Parameters without defaults <em>MUST</em> come first</li>
+</ul>
+</li>
+<li><strong>Variable parameters</strong> are functions that receive <em>any</em> number of arguments<ul>
+<li>e.g. function <code>max()</code> is: <code>ourMax(first, *rest):</code> where <code>*rest</code> is a tuple</li>
+</ul>
+</li>
+<li><strong>Keyword arguments</strong>: <ul>
+<li>if you do not know the order:<ul>
+<li>for function <code>def describe(age, name):</code> if the user does not know the order they can instead call it with ``describe(name = &quot;jeremy&quot;, age = 20)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="functional-decomposition">Functional Decomposition</h2>
+<ul>
+<li>Is the code readable and maintainable?</li>
+<li>Functional decomposition to increase clarity and avoid repetition</li>
+<li>Reasons for functions:<ul>
+<li>to make code easier to understand</li>
+<li>to make code reusable</li>
+</ul>
+</li>
+<li>2 sorts of functions:<ul>
+<li>Procedures: don&#39;t return a value to the caller, do print or write etc., name starts with a verb</li>
+<li>Real functions: does return a value to the caller, names are nouns</li>
+</ul>
+</li>
+<li>Functions arise:<ul>
+<li>Deliberately, from top-down design</li>
+<li>During refactoring when cleaning up code</li>
+</ul>
+</li>
+<li>Extracting a function:<ul>
+<li>Any sequence of complete statements can always be pulled out into a separate function by:<ul>
+<li>identifying all variables that must be defined already</li>
+<li>identifying all variables that get defined or altered by the statements or are needed later</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="files--exceptions">Files &amp; Exceptions</h1>
+<blockquote>
+<p>Specifically focused on reading files for data and statistics</p>
+</blockquote>
+<h2 id="files-as-sequences">Files as Sequences</h2>
+<ul>
+<li>Built in function <code>open(path[, mode])</code></li>
+<li><code>path</code> is a <em>filepath</em> string, and uses forward-slashes instead of backslashes</li>
+<li><code>mode</code> is <code>r w a</code> for reading, writing and appending</li>
+<li>A <em>file object</em> is a sequence of lines</li>
+</ul>
+<pre><code class="language-python">data = open(&quot;junk.txt&quot;)
+for line in data:
+    print(line[0:-1])
+data.close()
+
+#OR (but this uses more memory)
+
+data = open(&quot;junk.txt&quot;)
+lines = data.readlines()
+for line in lines:
+    print(line[0:-1])
+data.close() 
+</code></pre>
+<ul>
+<li>We can also access internet resources as files:</li>
+</ul>
+<pre><code class="language-python">import urllib.request
+
+url = &quot;http://web.csse.uwa.edu.au&quot;
+web_page = urllib.request.urlopen(url)
+for line in web_page:
+    print(line)
+web_page.close()
+</code></pre>
+<h2 id="example-reading-of-data">Example Reading of Data</h2>
+<pre><code class="language-python">infile = open(&quot;lect07a_bubble.txt)
+
+bubbles = []
+for line in infile:
+    data = line.split()    #the data is split by spaces
+    bubble = float(data[3])
+    bubbles.append(bubble)
+
+print(sum(bubbles)/len(bubbles))
+infile.close()
+
+######################################################################
+lect07a_bubble.txt:
+######################################################################
+1 1 2 53
+3 4 5 60
+2 3 5 43
+</code></pre>
+<h2 id="extracting-data">Extracting Data</h2>
+<ul>
+<li>Need to make sure that you get the data that is actually needed, skipping any unnecessary file data</li>
+</ul>
+<pre><code class="language-python">while line != &#39;\n&#39;:
+    pieces = line.split(&#39;,&#39;)
+    date = piece[2:5]
+    if pieces[5] != null:
+        rainfall = float(pieces[5])
+</code></pre>
+<h2 id="writing-files">Writing Files</h2>
+<pre><code class="language-python">out_file = open(&#39;myoutput.txt&#39;, &#39;w&#39;)               #create new file
+data = &quot;{0}, {1}, {2}, {2:.3f}\n&quot;                  #explicitly us \n
+out_file.write(data)
+out_file.close()
+</code></pre>
+<h2 id="debugging-and-exceptions">Debugging and Exceptions</h2>
+<ul>
+<li>We want a program to continue doing other things if some non-breaking thing goes wrong</li>
+<li>We know that these things might happen, however we do not know when</li>
+<li>We can use <code>if</code> conditions or functions, however this is tedious and you may miss some errors</li>
+<li>Hence we use an exception:</li>
+</ul>
+<pre><code class="language-python">def print_reciprocal(n):
+    try:
+        recip = 1.0 / n
+        print(&quot;Reciprocal of &quot;, n, &quot; is &quot;, recip)
+    except:
+        print(n, &quot; does not have a reciprocal)
+</code></pre>
+<ul>
+<li>Exceptions allow us to separate normal from exceptional code</li>
+<li>The except block is only processed if an exception occurs</li>
+<li>However, we usually want to use for specific exceptions (better formatting and output)</li>
+</ul>
+<pre><code class="language-python">def print_reciprocal(n):
+    try:
+        recip = 1/n
+    except TypeError:
+        print(&quot;parameter must be a number&quot;)
+    except ZeroDivisionError:
+        print(&quot;reciprocal of zero is undefined&quot;)
+    else:
+        print(&quot;Reciprocal is &quot;, recip)
+</code></pre>
+<ul>
+<li>Always use boundary cases when testing to ensure that things haven&#39;t &quot;slipped through&quot;</li>
+</ul>
+<h1 id="sets--dictionaries">Sets &amp; Dictionaries</h1>
+<ul>
+<li>Lists are mutable [  ,  ]</li>
+<li>Tuples are immutable (  ,  )</li>
+</ul>
+<h2 id="sets">Sets</h2>
+<ul>
+<li>Collections of unordered and distinct items</li>
+<li>Sets are mutable, but items are immutable
+<code>farm_animals = set([&quot;goat&quot;, &quot;pig&quot;])</code></li>
+<li>set() is faster than just creating a list<ul>
+<li>This is because it uses a hash function to check whether something is in a list, time of O(1)</li>
+</ul>
+</li>
+<li>Methods:</li>
+</ul>
+<pre><code class="language-python">.add()
+.remove()
+.clear()
+set1.union(set2)
+set1.intersection(set2)
+set1.difference(set2)
+set1.symmetric_difference(set2)       #finds the XOR
+set1.issubset(set2)
+set1.issuperset(set2)
+</code></pre>
+<ul>
+<li>To create sets of sets we must make the items in the sets immutable, so we use <code>frozenset()</code></li>
+</ul>
+<h2 id="dictionaries">Dictionaries</h2>
+<ul>
+<li>Key and value pairs</li>
+<li><code>fruit_counts = {&#39;banana&#39; : 3, &#39;apple&#39; : 1, &#39;pear&#39; : 7}</code></li>
+<li>Type name is <code>dict</code></li>
+<li>Methods:</li>
+</ul>
+<pre><code class="language-python">#adding
+fruit_counts[&#39;mango&#39;] = 42
+
+#deleting
+del fruit_counts[&#39;apple&#39;]
+fruit_counts.pop(&#39;apple&#39;)
+
+#clear
+dict.clear()
+
+#get value associated with key
+fruit_counts.get(&#39;apple&#39;)
+
+#get a list of the keys
+fruit_counts.keys()
+
+#get list of key/value pairs
+fruit_counts.items()
+
+#get list of values
+fruit_counts.values()
+
+#add a set of key/value pairs to the dictionary
+fruit_counts.update(set)
+</code></pre>
+<h1 id="objects">Objects</h1>
+<h4 id="class">Class</h4>
+<p>A user-defined prototype for an object that defines a set of attributes that characterise any object of the class
+<strong>Class Definition Example</strong>:</p>
+<pre><code class="language-python">class Colour:
+    &quot;&quot;&quot;An empty class --- all it has is a name&quot;&quot;&quot;
+    def __init__(self, red, green, blue):
+        &quot;&quot;&quot;Initialisation, defining its instance variables&quot;&quot;&quot;
+        self.red = red
+        self.green = green
+        self.blue = blue
+
+def display(Colour):
+    &quot;&quot;&quot;function to print a given colour&quot;&quot;&quot;
+    print(f&quot;(r:{colour.red}, g:{colour.green}, b:{colour.blue})&quot;)
+
+colour = Colour(255, 123, 53)
+display(colour)
+</code></pre>
+<h4 id="oop-inheritance-and-polymorphism">OOP Inheritance and Polymorphism</h4>
+<p><strong>OOP</strong> is Object Oriented Programming (all our code is in classes)</p>
+<pre><code class="language-python">class Point:
+    &quot;&quot;&quot;A point in 2-space&quot;&quot;&quot;
+    def __init__(self, x, y):
+        &quot;&quot;&quot;The INITIALISER&quot;&quot;&quot;
+        self.x = x
+        self.y = y
+    def __str__(self):
+        &quot;&quot;&quot;returns string representation&quot;&quot;&quot;
+        return f&quot;(x-coord: {self.x})
+
+p1 = Point(10, 20)
+print(f&quot;The x-coord of p1 is {p1.x}&quot;)
+</code></pre>
+<p><strong>Polymorphism</strong> is the ability of a bit of code to handle different data types</p>
+<h4 id="rectangle-example">Rectangle Example</h4>
+<pre><code class="language-python">class Rectangle:
+    &quot;&quot;&quot;Rectangle object that can find its area and perimeter&quot;&quot;&quot;
+    def __init__(self,width=1, height=2):
+        self.width = width
+        self.height = height
+    def area(self):
+        &quot;&quot;&quot;calculates area of a rectangle object&quot;&quot;&quot;
+        width = self.width
+        height = self.height
+        area = width * height
+        return area
+    def perimeter(self):
+        &quot;&quot;&quot;calculates area of a rectangle object&quot;&quot;&quot;
+        width = self.width
+        height = self.height
+        perimeter = 2 * width + 2 * height
+        return perimeter
+
+my_rec = Rectangle()
+print(my_rec.perimeter())
+</code></pre>
+<h1 id="numpy">NumPy</h1>
+<p><strong>NumPy</strong> is the fundamental package for scientific computing with Python</p>
+<h4 id="arrays">Arrays</h4>
+<ul>
+<li>All elements are of the same type</li>
+<li>they are multidimensional</li>
+<li>Arrays are fast because they are normally laid out sequentially in memory</li>
+</ul>
+<pre><code class="language-python">import numpy as np
+
+array1 = np.array([0, 1, 2, 3])
+array2 = np.array([1, 2, 3, 4], dtype = float)
+matrix = np.array([[3, 5],
+                   [7, 9],
+                   [3, 6]])
+print(array1[2])
+print(matrix[1, 2])
+matrix[0][1] = 1
+print(array1[0:2])
+
+#===============================
+people = np.array([
+                   (&quot;Alice&quot;, 25, 158.2)
+                   (&quot;Bob&quot;, 43, 173.1)
+                ], dtype = [(&quot;name&quot;, &quot;U10&quot;), (&quot;age&quot;, int), (&quot;height&quot;, float)])
+
+print(people[0])
+people[0] = (&quot;Leon S Kennedy&quot;, 32, 184.2)
+print(people[0][&quot;name&quot;])
+print(people[np.where(people[&quot;age&quot;] &lt; 40)
+</code></pre>
+<h4 id="numpy-loops">NumPy Loops</h4>
+<p><strong>Problem</strong>: Find the lowest value of $\theta$ between 0 and pi, where the function $f(\theta)$ crosses the x-axis:
+    $f(\theta) = cos(2\theta + \pi / 8) + sin(3\theta + \pi/6)$</p>
+<pre><code class="language-python">import numpy as npp
+import math
+import matplotlib.pyplot as plt
+
+SKIP = 0.01
+
+def crossing(value):
+    return np.cos(2 * value + math.pi / 8) + \
+           np.sin(3 * value + math.pi / 6)
+
+def main():
+    value = 0
+    last_val = crossing(value)
+    while value &lt;= math.pi:
+        value += SKIP
+        currentCos = crossing(value)
+        plt.plot([value], [currentCos], &quot;g.&quot;)
+        if (currentCos * last_val) &lt;= 0:
+            print(&quot;x crossing near angle &quot;, value - SKIP)
+        last_val = currentCos
+    plt.show()
+</code></pre>
+<h4 id="numpy-functions">NumPy Functions</h4>
+<pre><code class="language-python">z = np.zeros([4, 4]) #create an array of size 4 x 4 of zeroes
+a = np.ones([3, 3])
+b = np.eye([2, 2]) #identity matrix
+
+c = np.arange(2, 9, 3) #ranged array from 2 - 8, stepped by 3
+d = np.linspace(10.0, 20.0, 5) #start, end, number of values between
+
+# FUNCTIONS FOR SUMMARISING
+np.count_nonzero(array1 &gt;= 10) #non-zero and matches conditions
+np.all(array1 == 9) #whether all records match conditions
+np.any(array1 == 9) #if any records match
+np.sum(array1)
+np.amin(array1)
+np.amax(array1)
+array1.T #transposes the array
+np.sort(array1)
+-np.ssort(-data) #sort in descending
+np.save(&quot;my_rainfall_data&quot;, rainfall) #saves where rainfall is the array
+back_again = np.load(&quot;my_rainfall_data.npy&quot;)
+np.savetxt(&quot;rainfall.csv&quot;, rainfall, delimiter = &quot;,&quot;)
+back_again = np.loadtxt(&quot;rainfall.csv&quot;, delimiter = &quot;,&quot;)
+
+# Algebra
+array1.dot(array2) #finds dot product
+array1_sqaured = matrix_power(array1, 2)
+array1_inverse = matrix_power(array1, -1) or = inv(array1)
+</code></pre>
+<h1 id="sympy">SymPy</h1>
+<ul>
+<li>SymPy is used for applying symbolic computation techniques to areas such as algebra.</li>
+<li>Variables in SymPy must be declared</li>
+</ul>
+<pre><code class="language-python">from sympy import symbols, diff
+
+x, y = symbols(&#39;x y&#39;)
+y = x ** 2
+diff(y)                  #returns 2x
+</code></pre>
+<h4 id="displaying-formulas">Displaying Formulas</h4>
+<pre><code class="language-python">&gt;&gt;&gt; from sympy import init_session
+&gt;&gt;&gt; init_session()
+&gt;&gt;&gt; #insert sympy formula to be displayed
+</code></pre>
+<h4 id="solving">Solving</h4>
+<pre><code class="language-python">from sympy.solvers import solve
+from sympy import symbols
+
+solve(x**2 + 4*x + 3, x)              #returns [-3, -1]
+
+x, y, z = symbols(&#39;x y z&#39;)
+solve([z-4*x,
+      x-y,
+      z-(x**2+y**2)])   #solves the system of equations
+
+simplify(equation)
+equation.subs(x, 1) #substitutes x for 1
+equation.subs([(x, 3), (y, 4)])
+</code></pre>
+<h1 id="pandas">Pandas</h1>
+<ul>
+<li>Open source data analysis and manipulation tool</li>
+<li><code>python3 -m pip install pandas</code></li>
+</ul>
+<pre><code class="language-python">import pandas as pd
+df = pd.read_csv(&#39;csv_fille.csv&#39;)
+df.head(10)        #view first 10 rows
+df.describe()      #shows basic stats for each column
+df.info()          #content of the data type in each col
+
+###DISPLAY OPTIONS###
+pd.set_options(&#39;display.max_rows&#39;, 500)
+pd.set_options(&#39;display.width&#39;, 1000)
+
+write_html(&quot;demo.html&quot;,
+          df.head(10).style.\
+          highlight_max(color=&#39;darkgreen&#39;).\
+          highlight_min(color=&#39;#ff0000&#39;))
+</code></pre>
+<h1 id="visualisation">Visualisation</h1>
+<h4 id="graphical-output">Graphical Output</h4>
+<ul>
+<li>We will be using <code>matplotlib</code> as it is:<ul>
+<li>Multiplatform</li>
+<li>Publication-quality output </li>
+<li>Extremely flexible</li>
+</ul>
+</li>
+</ul>
+<h4 id="plotting-with-matplotlib">Plotting with Matplotlib</h4>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+
+plt.plot([1,2,3,4], [1,4,9,16], &quot;gx&quot;   #first series (in green, using x marks)
+        [1,2,3,4], [2,3,10,15], &quot;r-&quot;)  #second series (in red, using a line)
+plt.legend([&#39;line 1&#39;, &#39;line 2&#39;])
+plt.title(&#39;Title of Graph&#39;)
+plt.ylabel(&#39;some numbers&#39;)
+plt.show()
+
+#using a dataset:
+import pandas as pd
+df = pd.read_csv(&#39;temporal.csv&#39;)
+plt.xticks(range(0, len(df[&#39;Mes&#39;]), skip), df[&#39;Mes&#39;][:: skip], rotation=90)
+plt.tight_layout() #to see x-axis
+plt.plot(df[&#39;data science&#39;])
+
+#loops
+import math
+x = 0.0
+while x &lt; 4 * math.pi:
+    x = x * 0.05
+    y = math.sin(x)
+    plt.plot([x], [y], &#39;r.&#39;)
+    if y &lt;= 0:
+        continue
+    plt.plot([x], [y*2], &#39;g.&#39;)
+plt.show()
+
+#subplots (putting two graphs next two each other)
+plt.sublot(int rows, int cols, int loc)
+#put second graph calcs here
+</code></pre>
+<h4 id="interpolation">Interpolation</h4>
+<ul>
+<li>Linear interpolation assumes that data follows a straight line between adjacent measurements
+<code>numpy.interp(x, xp, fp)</code></li>
+<li>Cubic spline interpolation is made up of segments of cubic polynomials</li>
+</ul>
+<pre><code class="language-python">import numpy as np
+from scipy import interpolate
+</code></pre>
+<h4 id="3d-plotting">3D Plotting</h4>
+<ul>
+<li>Can be done using <code>matplotlib</code></li>
+<li>need to <code>from mpl_toolkits.myplot3d import Axes3D</code></li>
+</ul>
+<h4 id="curve-fitting">Curve Fitting</h4>
+<ul>
+<li>Used when we want to match an analytical (or symbolic) model to a set of measurements which may contain some error</li>
+<li>One method is linear regression:</li>
+</ul>
+<pre><code class="language-python">pol = numpy.polyfit(x, y, degree)
+x_val = np.linspace(0, 6, 100)
+y_val = numpy.polyval(pol, x_val)
+</code></pre>
+<h1 id="advanced-numpy">Advanced NumPy</h1>
+<h4 id="array-broadcasting">Array Broadcasting</h4>
+<ul>
+<li>Allows you to perform operations on arrays with different shapes</li>
+</ul>
+<pre><code class="language-python">import numpy as np
+#allows you to perform operations on arrays with different shapes
+x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+y = np.array([1, 0, -1])
+#We can use broadcasting to add y to each row of x as follows:
+print(x)
+result = x + y.reshape(3, 1)
+print(result)
+</code></pre>
+<ul>
+<li>Broadcasting can be used to perform operations on arrays with different dimensions</li>
+</ul>
+<pre><code class="language-python">x = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+a = 2
+result = a * x
+print(result) [[ 2 4 6 8]
+                [10 12 14 16]
+                [18 20 22 24]]
+</code></pre>
+<h4 id="universal-functions-ufunc">Universal Functions <code>ufunc</code></h4>
+<ul>
+<li>Allows efficient element-wise operations on arrays without the need for loops or element-by-element operations</li>
+<li>Allows us to just <code>C = A + B</code> arrays, instead of having to loop through the arrays</li>
+</ul>
+</div>
+    </div>
+</body>
+</html>
